@@ -1,0 +1,522 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #fff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="Inception">Inception</option>
+                                
+                                    <option value="The Dark Knight">The Dark Knight</option>
+                                
+                                    <option value="Interstellar">Interstellar</option>
+                                
+                                    <option value="Django Unchained">Django Unchained</option>
+                                
+                                    <option value="The Dark Knight Rises">The Dark Knight Rises</option>
+                                
+                                    <option value="Mad Max: Fury Road">Mad Max: Fury Road</option>
+                                
+                                    <option value="Titanic">Titanic</option>
+                                
+                                    <option value="Batman Begins">Batman Begins</option>
+                                
+                                    <option value="The Wolf of Wall Street">The Wolf of Wall Street</option>
+                                
+                                    <option value="Shutter Island">Shutter Island</option>
+                                
+                                    <option value="The Revenant">The Revenant</option>
+                                
+                                    <option value="X-Men: Days of Future Past">X-Men: Days of Future Past</option>
+                                
+                                    <option value="Kingsman: The Secret Service">Kingsman: The Secret Service</option>
+                                
+                                    <option value="Now You See Me">Now You See Me</option>
+                                
+                                    <option value="The Shawshank Redemption">The Shawshank Redemption</option>
+                                
+                                    <option value="Se7en">Se7en</option>
+                                
+                                    <option value="Harry Potter and the Prisoner of Azkaban">Harry Potter and the Prisoner of Azkaban</option>
+                                
+                                    <option value="Harry Potter and the Goblet of Fire">Harry Potter and the Goblet of Fire</option>
+                                
+                                    <option value="Lucy">Lucy</option>
+                                
+                                    <option value="The Martian">The Martian</option>
+                                
+                                    <option value="Saving Private Ryan">Saving Private Ryan</option>
+                                
+                                    <option value="The Avengers">The Avengers</option>
+                                
+                                    <option value="Iron Man">Iron Man</option>
+                                
+                                    <option value="Iron Man 3">Iron Man 3</option>
+                                
+                                    <option value="Captain America: Civil War">Captain America: Civil War</option>
+                                
+                                    <option value="Avengers: Age of Ultron">Avengers: Age of Ultron</option>
+                                
+                                    <option value="Captain America: The First Avenger">Captain America: The First Avenger</option>
+                                
+                                    <option value="Iron Man 2">Iron Man 2</option>
+                                
+                                    <option value="Captain America: The Winter Soldier">Captain America: The Winter Soldier</option>
+                                
+                                    <option value="Thor">Thor</option>
+                                
+                                    <option value="Arrival">Arrival</option>
+                                
+                                    <option value="Sherlock Holmes">Sherlock Holmes</option>
+                                
+                                    <option value="Pirates of the Caribbean: Dead Man's Chest">Pirates of the Caribbean: Dead Man's Chest</option>
+                                
+                                    <option value="Avatar">Avatar</option>
+                                
+                                    <option value="Guardians of the Galaxy">Guardians of the Galaxy</option>
+                                
+                                    <option value="Pirates of the Caribbean: The Curse of the Black Pearl">Pirates of the Caribbean: The Curse of the Black Pearl</option>
+                                
+                                    <option value="WALL·E">WALL·E</option>
+                                
+                                    <option value="Deadpool">Deadpool</option>
+                                
+                                    <option value="Big Hero 6">Big Hero 6</option>
+                                
+                                    <option value="Fight Club">Fight Club</option>
+                                
+                                    <option value="Inglourious Basterds">Inglourious Basterds</option>
+                                
+                                    <option value="Harry Potter and the Deathly Hallows: Part 2">Harry Potter and the Deathly Hallows: Part 2</option>
+                                
+                                    <option value="Suicide Squad">Suicide Squad</option>
+                                
+                                    <option value="Harry Potter and the Deathly Hallows: Part 1">Harry Potter and the Deathly Hallows: Part 1</option>
+                                
+                                    <option value="Harry Potter and the Order of the Phoenix">Harry Potter and the Order of the Phoenix</option>
+                                
+                                    <option value="Harry Potter and the Half-Blood Prince">Harry Potter and the Half-Blood Prince</option>
+                                
+                                    <option value="World War Z">World War Z</option>
+                                
+                                    <option value="Pulp Fiction">Pulp Fiction</option>
+                                
+                                    <option value="The Incredibles">The Incredibles</option>
+                                
+                                    <option value="Jurassic Park">Jurassic Park</option>
+                                
+                                    <option value="Jurassic World">Jurassic World</option>
+                                
+                                    <option value="The Hangover">The Hangover</option>
+                                
+                                    <option value="Gladiator">Gladiator</option>
+                                
+                                    <option value="Kill Bill: Vol. 1">Kill Bill: Vol. 1</option>
+                                
+                                    <option value="The Matrix">The Matrix</option>
+                                
+                                    <option value="The Lord of the Rings: The Fellowship of the Ring">The Lord of the Rings: The Fellowship of the Ring</option>
+                                
+                                    <option value="The Hobbit: An Unexpected Journey">The Hobbit: An Unexpected Journey</option>
+                                
+                                    <option value="Man of Steel">Man of Steel</option>
+                                
+                                    <option value="Batman v Superman: Dawn of Justice">Batman v Superman: Dawn of Justice</option>
+                                
+                                    <option value="John Wick">John Wick</option>
+                                
+                                    <option value="The Lord of the Rings: The Return of the King">The Lord of the Rings: The Return of the King</option>
+                                
+                                    <option value="The Lord of the Rings: The Two Towers">The Lord of the Rings: The Two Towers</option>
+                                
+                                    <option value="Beauty and the Beast">Beauty and the Beast</option>
+                                
+                                    <option value="Rogue One: A Star Wars Story">Rogue One: A Star Wars Story</option>
+                                
+                                    <option value="Fantastic Beasts and Where to Find Them">Fantastic Beasts and Where to Find Them</option>
+                                
+                                    <option value="X-Men: First Class">X-Men: First Class</option>
+                                
+                                    <option value="Forrest Gump">Forrest Gump</option>
+                                
+                                    <option value="The Amazing Spider-Man">The Amazing Spider-Man</option>
+                                
+                                    <option value="Toy Story">Toy Story</option>
+                                
+                                    <option value="Star Wars: The Force Awakens">Star Wars: The Force Awakens</option>
+                                
+                                    <option value="The Hunger Games">The Hunger Games</option>
+                                
+                                    <option value="The Hunger Games: Catching Fire">The Hunger Games: Catching Fire</option>
+                                
+                                    <option value="The Hunger Games: Mockingjay - Part 1">The Hunger Games: Mockingjay - Part 1</option>
+                                
+                                    <option value="Star Wars">Star Wars</option>
+                                
+                                    <option value="The Empire Strikes Back">The Empire Strikes Back</option>
+                                
+                                    <option value="Return of the Jedi">Return of the Jedi</option>
+                                
+                                    <option value="Edge of Tomorrow">Edge of Tomorrow</option>
+                                
+                                    <option value="The Intouchables">The Intouchables</option>
+                                
+                                    <option value="Life of Pi">Life of Pi</option>
+                                
+                                    <option value="Ant-Man">Ant-Man</option>
+                                
+                                    <option value="Despicable Me">Despicable Me</option>
+                                
+                                    <option value="Doctor Strange">Doctor Strange</option>
+                                
+                                    <option value="Up">Up</option>
+                                
+                                    <option value="Monsters, Inc.">Monsters, Inc.</option>
+                                
+                                    <option value="The Lion King">The Lion King</option>
+                                
+                                    <option value="The Imitation Game">The Imitation Game</option>
+                                
+                                    <option value="Harry Potter and the Philosopher's Stone">Harry Potter and the Philosopher's Stone</option>
+                                
+                                    <option value="Harry Potter and the Chamber of Secrets">Harry Potter and the Chamber of Secrets</option>
+                                
+                                    <option value="Skyfall">Skyfall</option>
+                                
+                                    <option value="Inside Out">Inside Out</option>
+                                
+                                    <option value="Frozen">Frozen</option>
+                                
+                                    <option value="Zootopia">Zootopia</option>
+                                
+                                    <option value="Logan">Logan</option>
+                                
+                                    <option value="The Maze Runner">The Maze Runner</option>
+                                
+                                    <option value="Finding Nemo">Finding Nemo</option>
+                                
+                                    <option value="Gone Girl">Gone Girl</option>
+                                
+                                    <option value="La La Land">La La Land</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "black"}, "id": "Inception", "label": "Inception", "shape": "dot", "title": "Inception Neighbors:\u003cbr\u003eThe Dark Knight\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eMad Max: Fury Road\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eTitanic\u003cbr\u003eThe Revenant\u003cbr\u003eShutter Island\u003cbr\u003eInterstellar\u003cbr\u003eNow You See Me\u003cbr\u003eDjango Unchained\u003cbr\u003eBatman Begins", "value": 13}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Dark Knight", "label": "The Dark Knight", "shape": "dot", "title": "The Dark Knight Neighbors:\u003cbr\u003eInception\u003cbr\u003eLucy\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eSe7en\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eThe Shawshank Redemption\u003cbr\u003eNow You See Me\u003cbr\u003eInterstellar\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eBatman Begins", "value": 11}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Interstellar", "label": "Interstellar", "shape": "dot", "title": "Interstellar Neighbors:\u003cbr\u003eInception\u003cbr\u003eThe Martian\u003cbr\u003eThe Dark Knight\u003cbr\u003eSaving Private Ryan\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eNow You See Me\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eBatman Begins", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Django Unchained", "label": "Django Unchained", "shape": "dot", "title": "Django Unchained Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eInception\u003cbr\u003eJurassic Park\u003cbr\u003ePulp Fiction\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eThe Revenant\u003cbr\u003eTitanic\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eShutter Island\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eThe Incredibles\u003cbr\u003eInglourious Basterds", "value": 14}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Dark Knight Rises", "label": "The Dark Knight Rises", "shape": "dot", "title": "The Dark Knight Rises Neighbors:\u003cbr\u003eInception\u003cbr\u003eLucy\u003cbr\u003eRogue One: A Star Wars Story\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eThe Dark Knight\u003cbr\u003eSe7en\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eThe Shawshank Redemption\u003cbr\u003eNow You See Me\u003cbr\u003eMad Max: Fury Road\u003cbr\u003eThe Revenant\u003cbr\u003eInterstellar\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eBatman Begins", "value": 14}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Mad Max: Fury Road", "label": "Mad Max: Fury Road", "shape": "dot", "title": "Mad Max: Fury Road Neighbors:\u003cbr\u003eFantastic Beasts and Where to Find Them\u003cbr\u003eInception\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eThe Revenant\u003cbr\u003eX-Men: First Class", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Titanic", "label": "Titanic", "shape": "dot", "title": "Titanic Neighbors:\u003cbr\u003eInception\u003cbr\u003eEdge of Tomorrow\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eThe Revenant\u003cbr\u003eShutter Island\u003cbr\u003eDjango Unchained", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Batman Begins", "label": "Batman Begins", "shape": "dot", "title": "Batman Begins Neighbors:\u003cbr\u003eInception\u003cbr\u003eLucy\u003cbr\u003eThe Dark Knight\u003cbr\u003eSe7en\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eThe Shawshank Redemption\u003cbr\u003eNow You See Me\u003cbr\u003eInterstellar\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eHarry Potter and the Prisoner of Azkaban", "value": 11}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Wolf of Wall Street", "label": "The Wolf of Wall Street", "shape": "dot", "title": "The Wolf of Wall Street Neighbors:\u003cbr\u003eInception\u003cbr\u003eThe Revenant\u003cbr\u003eTitanic\u003cbr\u003eShutter Island\u003cbr\u003eInterstellar\u003cbr\u003eDjango Unchained\u003cbr\u003eSuicide Squad", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Shutter Island", "label": "Shutter Island", "shape": "dot", "title": "Shutter Island Neighbors:\u003cbr\u003eInception\u003cbr\u003eThe Avengers\u003cbr\u003eIron Man 3\u003cbr\u003eNow You See Me\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eThe Revenant\u003cbr\u003eTitanic\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eDjango Unchained", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Revenant", "label": "The Revenant", "shape": "dot", "title": "The Revenant Neighbors:\u003cbr\u003eInception\u003cbr\u003eThe Maze Runner\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eMad Max: Fury Road\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eTitanic\u003cbr\u003eShutter Island\u003cbr\u003eDjango Unchained\u003cbr\u003eStar Wars: The Force Awakens", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "X-Men: Days of Future Past", "label": "X-Men: Days of Future Past", "shape": "dot", "title": "X-Men: Days of Future Past Neighbors:\u003cbr\u003eInception\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003eX-Men: First Class\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eThe Hunger Games: Mockingjay - Part 1\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eThe Hunger Games\u003cbr\u003eLogan\u003cbr\u003eBeauty and the Beast\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003eInglourious Basterds", "value": 12}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Kingsman: The Secret Service", "label": "Kingsman: The Secret Service", "shape": "dot", "title": "Kingsman: The Secret Service Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eInception\u003cbr\u003eJurassic Park\u003cbr\u003eThe Imitation Game\u003cbr\u003eThe Dark Knight\u003cbr\u003ePulp Fiction\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eSherlock Holmes\u003cbr\u003eNow You See Me\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eInterstellar\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles\u003cbr\u003eBatman Begins", "value": 16}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Now You See Me", "label": "Now You See Me", "shape": "dot", "title": "Now You See Me Neighbors:\u003cbr\u003eInception\u003cbr\u003eLucy\u003cbr\u003eBatman v Superman: Dawn of Justice\u003cbr\u003eThe Dark Knight\u003cbr\u003eThe Avengers\u003cbr\u003eSe7en\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eThe Hunger Games: Mockingjay - Part 1\u003cbr\u003eThe Shawshank Redemption\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eShutter Island\u003cbr\u003eInterstellar\u003cbr\u003eThe Hunger Games\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eBatman Begins\u003cbr\u003eInglourious Basterds", "value": 17}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Shawshank Redemption", "label": "The Shawshank Redemption", "shape": "dot", "title": "The Shawshank Redemption Neighbors:\u003cbr\u003eLucy\u003cbr\u003eThe Dark Knight\u003cbr\u003eSe7en\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eNow You See Me\u003cbr\u003eBatman Begins", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Se7en", "label": "Se7en", "shape": "dot", "title": "Se7en Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eIron Man\u003cbr\u003eLucy\u003cbr\u003eWorld War Z\u003cbr\u003eFight Club\u003cbr\u003eThe Dark Knight\u003cbr\u003eIron Man 3\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eThe Shawshank Redemption\u003cbr\u003eNow You See Me\u003cbr\u003eBatman Begins\u003cbr\u003eInglourious Basterds", "value": 12}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Prisoner of Azkaban", "label": "Harry Potter and the Prisoner of Azkaban", "shape": "dot", "title": "Harry Potter and the Prisoner of Azkaban Neighbors:\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eThe Dark Knight\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eBatman Begins\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 11}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Goblet of Fire", "label": "Harry Potter and the Goblet of Fire", "shape": "dot", "title": "Harry Potter and the Goblet of Fire Neighbors:\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eEdge of Tomorrow\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eThe Dark Knight\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eSkyfall\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eBatman Begins\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 13}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Lucy", "label": "Lucy", "shape": "dot", "title": "Lucy Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eThe Dark Knight\u003cbr\u003eThe Avengers\u003cbr\u003eSe7en\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eThe Shawshank Redemption\u003cbr\u003eNow You See Me\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eBatman Begins", "value": 11}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Martian", "label": "The Martian", "shape": "dot", "title": "The Martian Neighbors:\u003cbr\u003eAnt-Man\u003cbr\u003eSaving Private Ryan\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eDoctor Strange\u003cbr\u003eDespicable Me\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eInterstellar", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Saving Private Ryan", "label": "Saving Private Ryan", "shape": "dot", "title": "Saving Private Ryan Neighbors:\u003cbr\u003eThe Martian\u003cbr\u003eForrest Gump\u003cbr\u003eGuardians of the Galaxy\u003cbr\u003eInterstellar\u003cbr\u003eToy Story", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Avengers", "label": "The Avengers", "shape": "dot", "title": "The Avengers Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eArrival\u003cbr\u003eIron Man\u003cbr\u003eLucy\u003cbr\u003eThor\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eIron Man 3\u003cbr\u003eSherlock Holmes\u003cbr\u003eNow You See Me\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eShutter Island\u003cbr\u003eCaptain America: The First Avenger", "value": 14}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Iron Man", "label": "Iron Man", "shape": "dot", "title": "Iron Man Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eThor\u003cbr\u003eThe Avengers\u003cbr\u003eIron Man 3\u003cbr\u003eSe7en\u003cbr\u003eSherlock Holmes\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Iron Man 3", "label": "Iron Man 3", "shape": "dot", "title": "Iron Man 3 Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eIron Man\u003cbr\u003eWorld War Z\u003cbr\u003eThe Avengers\u003cbr\u003eSe7en\u003cbr\u003eSherlock Holmes\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eShutter Island", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Captain America: Civil War", "label": "Captain America: Civil War", "shape": "dot", "title": "Captain America: Civil War Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eAnt-Man\u003cbr\u003eIron Man\u003cbr\u003eArrival\u003cbr\u003eLucy\u003cbr\u003eThe Martian\u003cbr\u003eThe Avengers\u003cbr\u003eIron Man 3\u003cbr\u003eSherlock Holmes\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eCaptain America: The First Avenger", "value": 12}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Avengers: Age of Ultron", "label": "Avengers: Age of Ultron", "shape": "dot", "title": "Avengers: Age of Ultron Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eArrival\u003cbr\u003eIron Man\u003cbr\u003eLucy\u003cbr\u003eJurassic Park\u003cbr\u003eThor\u003cbr\u003eThe Avengers\u003cbr\u003eIron Man 3\u003cbr\u003ePulp Fiction\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eSherlock Holmes\u003cbr\u003eNow You See Me\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eShutter Island\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles", "value": 18}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Captain America: The First Avenger", "label": "Captain America: The First Avenger", "shape": "dot", "title": "Captain America: The First Avenger Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eThe Matrix\u003cbr\u003eJurassic Park\u003cbr\u003eThe Martian\u003cbr\u003eBeauty and the Beast\u003cbr\u003eThe Avengers\u003cbr\u003ePulp Fiction\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eThe Hunger Games\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles", "value": 17}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Iron Man 2", "label": "Iron Man 2", "shape": "dot", "title": "Iron Man 2 Neighbors:\u003cbr\u003eIron Man\u003cbr\u003eLucy\u003cbr\u003eJurassic Park\u003cbr\u003eThor\u003cbr\u003eThe Avengers\u003cbr\u003eIron Man 3\u003cbr\u003ePulp Fiction\u003cbr\u003eSe7en\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eSherlock Holmes\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles", "value": 16}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Captain America: The Winter Soldier", "label": "Captain America: The Winter Soldier", "shape": "dot", "title": "Captain America: The Winter Soldier Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eAnt-Man\u003cbr\u003eLucy\u003cbr\u003eJurassic Park\u003cbr\u003eThe Martian\u003cbr\u003eThe Avengers\u003cbr\u003ePulp Fiction\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles", "value": 13}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Thor", "label": "Thor", "shape": "dot", "title": "Thor Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eIron Man\u003cbr\u003eZootopia\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eThe Avengers\u003cbr\u003eAvengers: Age of Ultron", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Arrival", "label": "Arrival", "shape": "dot", "title": "Arrival Neighbors:\u003cbr\u003eMan of Steel\u003cbr\u003eRogue One: A Star Wars Story\u003cbr\u003eBatman v Superman: Dawn of Justice\u003cbr\u003eThe Avengers\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eDoctor Strange", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Sherlock Holmes", "label": "Sherlock Holmes", "shape": "dot", "title": "Sherlock Holmes Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eIron Man\u003cbr\u003eThe Avengers\u003cbr\u003eIron Man 3\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eDoctor Strange\u003cbr\u003eThe Imitation Game\u003cbr\u003eKingsman: The Secret Service", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Pirates of the Caribbean: Dead Man\u0027s Chest", "label": "Pirates of the Caribbean: Dead Man\u0027s Chest", "shape": "dot", "title": "Pirates of the Caribbean: Dead Man\u0027s Chest Neighbors:\u003cbr\u003eFantastic Beasts and Where to Find Them\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003eThor\u003cbr\u003eThe Avengers\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eThe Imitation Game\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Avatar", "label": "Avatar", "shape": "dot", "title": "Avatar Neighbors:\u003cbr\u003eGuardians of the Galaxy\u003cbr\u003eWALL\u00b7E\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Guardians of the Galaxy", "label": "Guardians of the Galaxy", "shape": "dot", "title": "Guardians of the Galaxy Neighbors:\u003cbr\u003eSaving Private Ryan\u003cbr\u003eGladiator\u003cbr\u003eThe Hangover\u003cbr\u003eJurassic World\u003cbr\u003eAvatar\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Pirates of the Caribbean: The Curse of the Black Pearl", "label": "Pirates of the Caribbean: The Curse of the Black Pearl", "shape": "dot", "title": "Pirates of the Caribbean: The Curse of the Black Pearl Neighbors:\u003cbr\u003eFantastic Beasts and Where to Find Them\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eGuardians of the Galaxy\u003cbr\u003eThe Imitation Game\u003cbr\u003eAvatar", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "WALL\u00b7E", "label": "WALL\u00b7E", "shape": "dot", "title": "WALL\u00b7E Neighbors:\u003cbr\u003eUp\u003cbr\u003eToy Story\u003cbr\u003eThe Incredibles\u003cbr\u003eMonsters, Inc.\u003cbr\u003eAvatar", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Deadpool", "label": "Deadpool", "shape": "dot", "title": "Deadpool Neighbors:\u003cbr\u003eBig Hero 6", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Big Hero 6", "label": "Big Hero 6", "shape": "dot", "title": "Big Hero 6 Neighbors:\u003cbr\u003eDeadpool\u003cbr\u003eFrozen\u003cbr\u003eRogue One: A Star Wars Story\u003cbr\u003eZootopia", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Fight Club", "label": "Fight Club", "shape": "dot", "title": "Fight Club Neighbors:\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eWorld War Z\u003cbr\u003eSuicide Squad\u003cbr\u003eSe7en\u003cbr\u003eHarry Potter and the Half-Blood Prince\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eInglourious Basterds", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Inglourious Basterds", "label": "Inglourious Basterds", "shape": "dot", "title": "Inglourious Basterds Neighbors:\u003cbr\u003eWorld War Z\u003cbr\u003eFight Club\u003cbr\u003eSe7en\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eNow You See Me\u003cbr\u003eX-Men: First Class\u003cbr\u003eDjango Unchained", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Deathly Hallows: Part 2", "label": "Harry Potter and the Deathly Hallows: Part 2", "shape": "dot", "title": "Harry Potter and the Deathly Hallows: Part 2 Neighbors:\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eFight Club\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eSkyfall\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Suicide Squad", "label": "Suicide Squad", "shape": "dot", "title": "Suicide Squad Neighbors:\u003cbr\u003eThe Wolf of Wall Street\u003cbr\u003eFight Club", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Deathly Hallows: Part 1", "label": "Harry Potter and the Deathly Hallows: Part 1", "shape": "dot", "title": "Harry Potter and the Deathly Hallows: Part 1 Neighbors:\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eEdge of Tomorrow\u003cbr\u003eFight Club\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eSkyfall\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 12}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Order of the Phoenix", "label": "Harry Potter and the Order of the Phoenix", "shape": "dot", "title": "Harry Potter and the Order of the Phoenix Neighbors:\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eFight Club\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eSkyfall\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Half-Blood Prince", "label": "Harry Potter and the Half-Blood Prince", "shape": "dot", "title": "Harry Potter and the Half-Blood Prince Neighbors:\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eFight Club\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Chamber of Secrets", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "World War Z", "label": "World War Z", "shape": "dot", "title": "World War Z Neighbors:\u003cbr\u003eIron Man 3\u003cbr\u003eSe7en\u003cbr\u003eInglourious Basterds\u003cbr\u003eFight Club", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Pulp Fiction", "label": "Pulp Fiction", "shape": "dot", "title": "Pulp Fiction Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eJurassic Park\u003cbr\u003eKill Bill: Vol. 1\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Incredibles", "label": "The Incredibles", "shape": "dot", "title": "The Incredibles Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003eBatman v Superman: Dawn of Justice\u003cbr\u003eJurassic Park\u003cbr\u003ePulp Fiction\u003cbr\u003eWALL\u00b7E\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Jurassic Park", "label": "Jurassic Park", "shape": "dot", "title": "Jurassic Park Neighbors:\u003cbr\u003eIron Man 2\u003cbr\u003ePulp Fiction\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003eJurassic World\u003cbr\u003eAvengers: Age of Ultron\u003cbr\u003eCaptain America: The Winter Soldier\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eDjango Unchained\u003cbr\u003eThe Incredibles", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Jurassic World", "label": "Jurassic World", "shape": "dot", "title": "Jurassic World Neighbors:\u003cbr\u003eAnt-Man\u003cbr\u003eJurassic Park\u003cbr\u003eLife of Pi\u003cbr\u003eThe Intouchables\u003cbr\u003eGuardians of the Galaxy\u003cbr\u003eThe Amazing Spider-Man", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Hangover", "label": "The Hangover", "shape": "dot", "title": "The Hangover Neighbors:\u003cbr\u003eGuardians of the Galaxy", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Gladiator", "label": "Gladiator", "shape": "dot", "title": "Gladiator Neighbors:\u003cbr\u003eGuardians of the Galaxy\u003cbr\u003eMan of Steel\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Kill Bill: Vol. 1", "label": "Kill Bill: Vol. 1", "shape": "dot", "title": "Kill Bill: Vol. 1 Neighbors:\u003cbr\u003ePulp Fiction", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Matrix", "label": "The Matrix", "shape": "dot", "title": "The Matrix Neighbors:\u003cbr\u003eMan of Steel\u003cbr\u003eBatman v Superman: Dawn of Justice\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eJohn Wick\u003cbr\u003eCaptain America: The First Avenger", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Lord of the Rings: The Fellowship of the Ring", "label": "The Lord of the Rings: The Fellowship of the Ring", "shape": "dot", "title": "The Lord of the Rings: The Fellowship of the Ring Neighbors:\u003cbr\u003eThe Matrix\u003cbr\u003eThe Martian\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eBeauty and the Beast\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Hobbit: An Unexpected Journey", "label": "The Hobbit: An Unexpected Journey", "shape": "dot", "title": "The Hobbit: An Unexpected Journey Neighbors:\u003cbr\u003eThe Matrix\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eBeauty and the Beast\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003eStar Wars: The Force Awakens", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Man of Steel", "label": "Man of Steel", "shape": "dot", "title": "Man of Steel Neighbors:\u003cbr\u003eInside Out\u003cbr\u003eThe Matrix\u003cbr\u003eArrival\u003cbr\u003eBatman v Superman: Dawn of Justice\u003cbr\u003eGladiator", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Batman v Superman: Dawn of Justice", "label": "Batman v Superman: Dawn of Justice", "shape": "dot", "title": "Batman v Superman: Dawn of Justice Neighbors:\u003cbr\u003eInside Out\u003cbr\u003eThe Matrix\u003cbr\u003eMan of Steel\u003cbr\u003eArrival\u003cbr\u003eThe Lion King\u003cbr\u003eGone Girl\u003cbr\u003eNow You See Me\u003cbr\u003eThe Incredibles", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "John Wick", "label": "John Wick", "shape": "dot", "title": "John Wick Neighbors:\u003cbr\u003eThe Matrix\u003cbr\u003eFinding Nemo", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Lord of the Rings: The Return of the King", "label": "The Lord of the Rings: The Return of the King", "shape": "dot", "title": "The Lord of the Rings: The Return of the King Neighbors:\u003cbr\u003eStar Wars: The Force Awakens\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eBeauty and the Beast\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Lord of the Rings: The Two Towers", "label": "The Lord of the Rings: The Two Towers", "shape": "dot", "title": "The Lord of the Rings: The Two Towers Neighbors:\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eBeauty and the Beast\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Beauty and the Beast", "label": "Beauty and the Beast", "shape": "dot", "title": "Beauty and the Beast Neighbors:\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eThe Lord of the Rings: The Two Towers\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eThe Lord of the Rings: The Fellowship of the Ring\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eThe Hunger Games\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eFrozen\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 17}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Rogue One: A Star Wars Story", "label": "Rogue One: A Star Wars Story", "shape": "dot", "title": "Rogue One: A Star Wars Story Neighbors:\u003cbr\u003eBig Hero 6\u003cbr\u003eArrival\u003cbr\u003eZootopia\u003cbr\u003eThe Dark Knight Rises\u003cbr\u003eDoctor Strange\u003cbr\u003eFrozen", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Fantastic Beasts and Where to Find Them", "label": "Fantastic Beasts and Where to Find Them", "shape": "dot", "title": "Fantastic Beasts and Where to Find Them Neighbors:\u003cbr\u003eMad Max: Fury Road\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "X-Men: First Class", "label": "X-Men: First Class", "shape": "dot", "title": "X-Men: First Class Neighbors:\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eThe Hunger Games: Mockingjay - Part 1\u003cbr\u003eMad Max: Fury Road\u003cbr\u003eThe Hunger Games\u003cbr\u003eInglourious Basterds", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Forrest Gump", "label": "Forrest Gump", "shape": "dot", "title": "Forrest Gump Neighbors:\u003cbr\u003eToy Story\u003cbr\u003eSaving Private Ryan\u003cbr\u003eThe Amazing Spider-Man", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Amazing Spider-Man", "label": "The Amazing Spider-Man", "shape": "dot", "title": "The Amazing Spider-Man Neighbors:\u003cbr\u003eForrest Gump\u003cbr\u003eLife of Pi\u003cbr\u003eJurassic World\u003cbr\u003eLa La Land", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Toy Story", "label": "Toy Story", "shape": "dot", "title": "Toy Story Neighbors:\u003cbr\u003eSaving Private Ryan\u003cbr\u003eForrest Gump\u003cbr\u003eWALL\u00b7E\u003cbr\u003eUp\u003cbr\u003eMonsters, Inc.", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Star Wars: The Force Awakens", "label": "Star Wars: The Force Awakens", "shape": "dot", "title": "Star Wars: The Force Awakens Neighbors:\u003cbr\u003eStar Wars\u003cbr\u003eThe Empire Strikes Back\u003cbr\u003eThe Hobbit: An Unexpected Journey\u003cbr\u003eThe Revenant\u003cbr\u003eThe Lord of the Rings: The Return of the King\u003cbr\u003eReturn of the Jedi", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Hunger Games", "label": "The Hunger Games", "shape": "dot", "title": "The Hunger Games Neighbors:\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Hunger Games: Mockingjay - Part 1\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eNow You See Me\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eX-Men: First Class\u003cbr\u003eBeauty and the Beast", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Hunger Games: Catching Fire", "label": "The Hunger Games: Catching Fire", "shape": "dot", "title": "The Hunger Games: Catching Fire Neighbors:\u003cbr\u003eX-Men: First Class\u003cbr\u003eThe Hunger Games: Mockingjay - Part 1\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eNow You See Me\u003cbr\u003eCaptain America: The First Avenger\u003cbr\u003eThe Hunger Games\u003cbr\u003eBeauty and the Beast", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Hunger Games: Mockingjay - Part 1", "label": "The Hunger Games: Mockingjay - Part 1", "shape": "dot", "title": "The Hunger Games: Mockingjay - Part 1 Neighbors:\u003cbr\u003eThe Hunger Games\u003cbr\u003eX-Men: Days of Future Past\u003cbr\u003eThe Hunger Games: Catching Fire\u003cbr\u003eNow You See Me\u003cbr\u003eX-Men: First Class", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Star Wars", "label": "Star Wars", "shape": "dot", "title": "Star Wars Neighbors:\u003cbr\u003eThe Empire Strikes Back\u003cbr\u003eReturn of the Jedi\u003cbr\u003eThe Lion King\u003cbr\u003eStar Wars: The Force Awakens", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Empire Strikes Back", "label": "The Empire Strikes Back", "shape": "dot", "title": "The Empire Strikes Back Neighbors:\u003cbr\u003eStar Wars\u003cbr\u003eThe Lion King\u003cbr\u003eMonsters, Inc.\u003cbr\u003eReturn of the Jedi\u003cbr\u003eStar Wars: The Force Awakens", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Return of the Jedi", "label": "Return of the Jedi", "shape": "dot", "title": "Return of the Jedi Neighbors:\u003cbr\u003eMonsters, Inc.\u003cbr\u003eStar Wars\u003cbr\u003eThe Empire Strikes Back\u003cbr\u003eStar Wars: The Force Awakens", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Edge of Tomorrow", "label": "Edge of Tomorrow", "shape": "dot", "title": "Edge of Tomorrow Neighbors:\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eTitanic\u003cbr\u003eHarry Potter and the Goblet of Fire", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Intouchables", "label": "The Intouchables", "shape": "dot", "title": "The Intouchables Neighbors:\u003cbr\u003eJurassic World", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Life of Pi", "label": "Life of Pi", "shape": "dot", "title": "Life of Pi Neighbors:\u003cbr\u003eJurassic World\u003cbr\u003eThe Amazing Spider-Man", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Ant-Man", "label": "Ant-Man", "shape": "dot", "title": "Ant-Man Neighbors:\u003cbr\u003eCaptain America: Civil War\u003cbr\u003eJurassic World\u003cbr\u003eThe Martian\u003cbr\u003eCaptain America: The Winter Soldier", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Despicable Me", "label": "Despicable Me", "shape": "dot", "title": "Despicable Me Neighbors:\u003cbr\u003eThe Martian", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Doctor Strange", "label": "Doctor Strange", "shape": "dot", "title": "Doctor Strange Neighbors:\u003cbr\u003eRogue One: A Star Wars Story\u003cbr\u003eArrival\u003cbr\u003eThe Martian\u003cbr\u003eSherlock Holmes\u003cbr\u003eThe Imitation Game", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Up", "label": "Up", "shape": "dot", "title": "Up Neighbors:\u003cbr\u003eToy Story\u003cbr\u003eMonsters, Inc.\u003cbr\u003eWALL\u00b7E", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Monsters, Inc.", "label": "Monsters, Inc.", "shape": "dot", "title": "Monsters, Inc. Neighbors:\u003cbr\u003eThe Empire Strikes Back\u003cbr\u003eWALL\u00b7E\u003cbr\u003eUp\u003cbr\u003eToy Story\u003cbr\u003eReturn of the Jedi", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Lion King", "label": "The Lion King", "shape": "dot", "title": "The Lion King Neighbors:\u003cbr\u003eStar Wars\u003cbr\u003eThe Empire Strikes Back\u003cbr\u003eBatman v Superman: Dawn of Justice", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Imitation Game", "label": "The Imitation Game", "shape": "dot", "title": "The Imitation Game Neighbors:\u003cbr\u003ePirates of the Caribbean: Dead Man\u0027s Chest\u003cbr\u003eSherlock Holmes\u003cbr\u003eDoctor Strange\u003cbr\u003eSkyfall\u003cbr\u003eKingsman: The Secret Service\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Philosopher\u0027s Stone", "label": "Harry Potter and the Philosopher\u0027s Stone", "shape": "dot", "title": "Harry Potter and the Philosopher\u0027s Stone Neighbors:\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eGladiator\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Chamber of Secrets\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Harry Potter and the Chamber of Secrets", "label": "Harry Potter and the Chamber of Secrets", "shape": "dot", "title": "Harry Potter and the Chamber of Secrets Neighbors:\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eGladiator\u003cbr\u003eHarry Potter and the Order of the Phoenix\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eHarry Potter and the Philosopher\u0027s Stone\u003cbr\u003eBeauty and the Beast\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Prisoner of Azkaban\u003cbr\u003eHarry Potter and the Half-Blood Prince", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Skyfall", "label": "Skyfall", "shape": "dot", "title": "Skyfall Neighbors:\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 2\u003cbr\u003eHarry Potter and the Goblet of Fire\u003cbr\u003eThe Imitation Game\u003cbr\u003eHarry Potter and the Deathly Hallows: Part 1\u003cbr\u003eHarry Potter and the Order of the Phoenix", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Inside Out", "label": "Inside Out", "shape": "dot", "title": "Inside Out Neighbors:\u003cbr\u003eMan of Steel\u003cbr\u003eBatman v Superman: Dawn of Justice", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Frozen", "label": "Frozen", "shape": "dot", "title": "Frozen Neighbors:\u003cbr\u003eBig Hero 6\u003cbr\u003eBeauty and the Beast\u003cbr\u003eRogue One: A Star Wars Story\u003cbr\u003eZootopia", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Zootopia", "label": "Zootopia", "shape": "dot", "title": "Zootopia Neighbors:\u003cbr\u003eBig Hero 6\u003cbr\u003eRogue One: A Star Wars Story\u003cbr\u003eThor\u003cbr\u003eLa La Land\u003cbr\u003eFrozen", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Logan", "label": "Logan", "shape": "dot", "title": "Logan Neighbors:\u003cbr\u003eX-Men: Days of Future Past", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "The Maze Runner", "label": "The Maze Runner", "shape": "dot", "title": "The Maze Runner Neighbors:\u003cbr\u003eThe Revenant", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Finding Nemo", "label": "Finding Nemo", "shape": "dot", "title": "Finding Nemo Neighbors:\u003cbr\u003eJohn Wick", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Gone Girl", "label": "Gone Girl", "shape": "dot", "title": "Gone Girl Neighbors:\u003cbr\u003eBatman v Superman: Dawn of Justice", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "La La Land", "label": "La La Land", "shape": "dot", "title": "La La Land Neighbors:\u003cbr\u003eZootopia\u003cbr\u003eThe Amazing Spider-Man", "value": 2}]);
+                  edges = new vis.DataSet([{"from": "Inception", "to": "The Dark Knight", "value": 1}, {"from": "Inception", "to": "Interstellar", "value": 1}, {"from": "Inception", "to": "Django Unchained", "value": 1}, {"from": "Inception", "to": "The Dark Knight Rises", "value": 4}, {"from": "Inception", "to": "Mad Max: Fury Road", "value": 1}, {"from": "Inception", "to": "Titanic", "value": 1}, {"from": "Inception", "to": "Batman Begins", "value": 3}, {"from": "Inception", "to": "The Wolf of Wall Street", "value": 1}, {"from": "Inception", "to": "Shutter Island", "value": 1}, {"from": "Inception", "to": "The Revenant", "value": 2}, {"from": "Inception", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "Inception", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Inception", "to": "Now You See Me", "value": 1}, {"from": "The Dark Knight", "to": "Interstellar", "value": 1}, {"from": "The Dark Knight", "to": "The Shawshank Redemption", "value": 1}, {"from": "The Dark Knight", "to": "The Dark Knight Rises", "value": 4}, {"from": "The Dark Knight", "to": "Batman Begins", "value": 4}, {"from": "The Dark Knight", "to": "Se7en", "value": 1}, {"from": "The Dark Knight", "to": "Harry Potter and the Prisoner of Azkaban", "value": 1}, {"from": "The Dark Knight", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "The Dark Knight", "to": "Harry Potter and the Goblet of Fire", "value": 1}, {"from": "The Dark Knight", "to": "Now You See Me", "value": 2}, {"from": "The Dark Knight", "to": "Lucy", "value": 1}, {"from": "Interstellar", "to": "The Dark Knight Rises", "value": 2}, {"from": "Interstellar", "to": "The Martian", "value": 2}, {"from": "Interstellar", "to": "Batman Begins", "value": 1}, {"from": "Interstellar", "to": "The Wolf of Wall Street", "value": 1}, {"from": "Interstellar", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Interstellar", "to": "Now You See Me", "value": 1}, {"from": "Interstellar", "to": "Saving Private Ryan", "value": 1}, {"from": "The Avengers", "to": "Iron Man", "value": 2}, {"from": "The Avengers", "to": "Iron Man 3", "value": 1}, {"from": "The Avengers", "to": "Captain America: Civil War", "value": 4}, {"from": "The Avengers", "to": "Shutter Island", "value": 1}, {"from": "The Avengers", "to": "Avengers: Age of Ultron", "value": 6}, {"from": "The Avengers", "to": "Captain America: The First Avenger", "value": 1}, {"from": "The Avengers", "to": "Iron Man 2", "value": 3}, {"from": "The Avengers", "to": "Captain America: The Winter Soldier", "value": 3}, {"from": "The Avengers", "to": "Thor", "value": 4}, {"from": "The Avengers", "to": "Arrival", "value": 1}, {"from": "The Avengers", "to": "Sherlock Holmes", "value": 1}, {"from": "The Avengers", "to": "Now You See Me", "value": 1}, {"from": "The Avengers", "to": "Lucy", "value": 1}, {"from": "The Avengers", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "Avatar", "to": "Guardians of the Galaxy", "value": 1}, {"from": "Avatar", "to": "Pirates of the Caribbean: The Curse of the Black Pearl", "value": 1}, {"from": "Avatar", "to": "WALL\u00b7E", "value": 1}, {"from": "Deadpool", "to": "Big Hero 6", "value": 1}, {"from": "Fight Club", "to": "Inglourious Basterds", "value": 1}, {"from": "Fight Club", "to": "Harry Potter and the Deathly Hallows: Part 2", "value": 1}, {"from": "Fight Club", "to": "Se7en", "value": 1}, {"from": "Fight Club", "to": "Suicide Squad", "value": 1}, {"from": "Fight Club", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 1}, {"from": "Fight Club", "to": "Harry Potter and the Order of the Phoenix", "value": 1}, {"from": "Fight Club", "to": "Harry Potter and the Half-Blood Prince", "value": 1}, {"from": "Fight Club", "to": "World War Z", "value": 2}, {"from": "Django Unchained", "to": "Pulp Fiction", "value": 1}, {"from": "Django Unchained", "to": "Titanic", "value": 1}, {"from": "Django Unchained", "to": "The Wolf of Wall Street", "value": 1}, {"from": "Django Unchained", "to": "Inglourious Basterds", "value": 1}, {"from": "Django Unchained", "to": "Shutter Island", "value": 1}, {"from": "Django Unchained", "to": "Avengers: Age of Ultron", "value": 1}, {"from": "Django Unchained", "to": "The Revenant", "value": 1}, {"from": "Django Unchained", "to": "Captain America: The First Avenger", "value": 1}, {"from": "Django Unchained", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Django Unchained", "to": "Iron Man 2", "value": 1}, {"from": "Django Unchained", "to": "Captain America: The Winter Soldier", "value": 1}, {"from": "Django Unchained", "to": "The Incredibles", "value": 1}, {"from": "Django Unchained", "to": "Jurassic Park", "value": 1}, {"from": "Guardians of the Galaxy", "to": "Jurassic World", "value": 1}, {"from": "Guardians of the Galaxy", "to": "Pirates of the Caribbean: The Curse of the Black Pearl", "value": 1}, {"from": "Guardians of the Galaxy", "to": "The Hangover", "value": 1}, {"from": "Guardians of the Galaxy", "to": "Gladiator", "value": 1}, {"from": "Guardians of the Galaxy", "to": "Saving Private Ryan", "value": 1}, {"from": "Pulp Fiction", "to": "Avengers: Age of Ultron", "value": 1}, {"from": "Pulp Fiction", "to": "Captain America: The First Avenger", "value": 1}, {"from": "Pulp Fiction", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Pulp Fiction", "to": "Iron Man 2", "value": 1}, {"from": "Pulp Fiction", "to": "Captain America: The Winter Soldier", "value": 1}, {"from": "Pulp Fiction", "to": "Kill Bill: Vol. 1", "value": 1}, {"from": "Pulp Fiction", "to": "The Incredibles", "value": 1}, {"from": "Pulp Fiction", "to": "Jurassic Park", "value": 1}, {"from": "The Matrix", "to": "The Lord of the Rings: The Fellowship of the Ring", "value": 1}, {"from": "The Matrix", "to": "The Hobbit: An Unexpected Journey", "value": 1}, {"from": "The Matrix", "to": "Captain America: The First Avenger", "value": 1}, {"from": "The Matrix", "to": "Man of Steel", "value": 1}, {"from": "The Matrix", "to": "Batman v Superman: Dawn of Justice", "value": 1}, {"from": "The Matrix", "to": "John Wick", "value": 1}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "The Lord of the Rings: The Return of the King", "value": 6}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "The Lord of the Rings: The Two Towers", "value": 7}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "The Hobbit: An Unexpected Journey", "value": 5}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "The Martian", "value": 1}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "Pirates of the Caribbean: The Curse of the Black Pearl", "value": 1}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "Captain America: The First Avenger", "value": 1}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "The Lord of the Rings: The Fellowship of the Ring", "to": "Beauty and the Beast", "value": 1}, {"from": "The Shawshank Redemption", "to": "The Dark Knight Rises", "value": 1}, {"from": "The Shawshank Redemption", "to": "Batman Begins", "value": 1}, {"from": "The Shawshank Redemption", "to": "Se7en", "value": 1}, {"from": "The Shawshank Redemption", "to": "Now You See Me", "value": 1}, {"from": "The Shawshank Redemption", "to": "Lucy", "value": 1}, {"from": "The Dark Knight Rises", "to": "Mad Max: Fury Road", "value": 1}, {"from": "The Dark Knight Rises", "to": "Batman Begins", "value": 4}, {"from": "The Dark Knight Rises", "to": "Se7en", "value": 1}, {"from": "The Dark Knight Rises", "to": "The Revenant", "value": 1}, {"from": "The Dark Knight Rises", "to": "Harry Potter and the Prisoner of Azkaban", "value": 1}, {"from": "The Dark Knight Rises", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "The Dark Knight Rises", "to": "Harry Potter and the Goblet of Fire", "value": 1}, {"from": "The Dark Knight Rises", "to": "Now You See Me", "value": 2}, {"from": "The Dark Knight Rises", "to": "Lucy", "value": 1}, {"from": "The Dark Knight Rises", "to": "Rogue One: A Star Wars Story", "value": 1}, {"from": "Mad Max: Fury Road", "to": "The Revenant", "value": 1}, {"from": "Mad Max: Fury Road", "to": "Fantastic Beasts and Where to Find Them", "value": 1}, {"from": "Mad Max: Fury Road", "to": "X-Men: First Class", "value": 1}, {"from": "Forrest Gump", "to": "The Amazing Spider-Man", "value": 1}, {"from": "Forrest Gump", "to": "Toy Story", "value": 1}, {"from": "Forrest Gump", "to": "Saving Private Ryan", "value": 1}, {"from": "The Lord of the Rings: The Return of the King", "to": "The Lord of the Rings: The Two Towers", "value": 9}, {"from": "The Lord of the Rings: The Return of the King", "to": "Star Wars: The Force Awakens", "value": 1}, {"from": "The Lord of the Rings: The Return of the King", "to": "The Hobbit: An Unexpected Journey", "value": 3}, {"from": "The Lord of the Rings: The Return of the King", "to": "Pirates of the Caribbean: The Curse of the Black Pearl", "value": 1}, {"from": "The Lord of the Rings: The Return of the King", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "The Lord of the Rings: The Return of the King", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "The Lord of the Rings: The Return of the King", "to": "Beauty and the Beast", "value": 1}, {"from": "The Hunger Games", "to": "The Hunger Games: Catching Fire", "value": 8}, {"from": "The Hunger Games", "to": "Captain America: The First Avenger", "value": 2}, {"from": "The Hunger Games", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "The Hunger Games", "to": "Now You See Me", "value": 1}, {"from": "The Hunger Games", "to": "The Hunger Games: Mockingjay - Part 1", "value": 6}, {"from": "The Hunger Games", "to": "Beauty and the Beast", "value": 1}, {"from": "The Hunger Games", "to": "X-Men: First Class", "value": 1}, {"from": "Iron Man", "to": "Iron Man 3", "value": 3}, {"from": "Iron Man", "to": "Captain America: Civil War", "value": 2}, {"from": "Iron Man", "to": "Avengers: Age of Ultron", "value": 1}, {"from": "Iron Man", "to": "Se7en", "value": 1}, {"from": "Iron Man", "to": "Iron Man 2", "value": 3}, {"from": "Iron Man", "to": "Thor", "value": 1}, {"from": "Iron Man", "to": "Sherlock Holmes", "value": 1}, {"from": "The Lord of the Rings: The Two Towers", "to": "The Hobbit: An Unexpected Journey", "value": 3}, {"from": "The Lord of the Rings: The Two Towers", "to": "Pirates of the Caribbean: The Curse of the Black Pearl", "value": 1}, {"from": "The Lord of the Rings: The Two Towers", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "The Lord of the Rings: The Two Towers", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "The Lord of the Rings: The Two Towers", "to": "Beauty and the Beast", "value": 1}, {"from": "Iron Man 3", "to": "Captain America: Civil War", "value": 3}, {"from": "Iron Man 3", "to": "Shutter Island", "value": 1}, {"from": "Iron Man 3", "to": "Avengers: Age of Ultron", "value": 2}, {"from": "Iron Man 3", "to": "Se7en", "value": 1}, {"from": "Iron Man 3", "to": "Iron Man 2", "value": 3}, {"from": "Iron Man 3", "to": "Sherlock Holmes", "value": 1}, {"from": "Iron Man 3", "to": "World War Z", "value": 1}, {"from": "Star Wars: The Force Awakens", "to": "The Hobbit: An Unexpected Journey", "value": 1}, {"from": "Star Wars: The Force Awakens", "to": "Star Wars", "value": 3}, {"from": "Star Wars: The Force Awakens", "to": "The Empire Strikes Back", "value": 3}, {"from": "Star Wars: The Force Awakens", "to": "The Revenant", "value": 1}, {"from": "Star Wars: The Force Awakens", "to": "Return of the Jedi", "value": 3}, {"from": "The Hobbit: An Unexpected Journey", "to": "Captain America: The First Avenger", "value": 1}, {"from": "The Hobbit: An Unexpected Journey", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "The Hobbit: An Unexpected Journey", "to": "Beauty and the Beast", "value": 1}, {"from": "Titanic", "to": "The Wolf of Wall Street", "value": 1}, {"from": "Titanic", "to": "Shutter Island", "value": 1}, {"from": "Titanic", "to": "The Revenant", "value": 1}, {"from": "Titanic", "to": "Edge of Tomorrow", "value": 1}, {"from": "Jurassic World", "to": "The Intouchables", "value": 1}, {"from": "Jurassic World", "to": "The Amazing Spider-Man", "value": 1}, {"from": "Jurassic World", "to": "Life of Pi", "value": 1}, {"from": "Jurassic World", "to": "Ant-Man", "value": 1}, {"from": "Jurassic World", "to": "Jurassic Park", "value": 1}, {"from": "The Martian", "to": "Captain America: Civil War", "value": 1}, {"from": "The Martian", "to": "Captain America: The First Avenger", "value": 1}, {"from": "The Martian", "to": "Despicable Me", "value": 1}, {"from": "The Martian", "to": "Captain America: The Winter Soldier", "value": 1}, {"from": "The Martian", "to": "Ant-Man", "value": 1}, {"from": "The Martian", "to": "Doctor Strange", "value": 1}, {"from": "The Martian", "to": "Saving Private Ryan", "value": 1}, {"from": "Batman Begins", "to": "Se7en", "value": 1}, {"from": "Batman Begins", "to": "Harry Potter and the Prisoner of Azkaban", "value": 1}, {"from": "Batman Begins", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Batman Begins", "to": "Harry Potter and the Goblet of Fire", "value": 1}, {"from": "Batman Begins", "to": "Now You See Me", "value": 2}, {"from": "Batman Begins", "to": "Lucy", "value": 1}, {"from": "Up", "to": "WALL\u00b7E", "value": 1}, {"from": "Up", "to": "Monsters, Inc.", "value": 2}, {"from": "Up", "to": "Toy Story", "value": 1}, {"from": "Star Wars", "to": "The Empire Strikes Back", "value": 8}, {"from": "Star Wars", "to": "The Lion King", "value": 1}, {"from": "Star Wars", "to": "Return of the Jedi", "value": 7}, {"from": "Pirates of the Caribbean: The Curse of the Black Pearl", "to": "The Imitation Game", "value": 1}, {"from": "Pirates of the Caribbean: The Curse of the Black Pearl", "to": "Fantastic Beasts and Where to Find Them", "value": 1}, {"from": "Pirates of the Caribbean: The Curse of the Black Pearl", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 8}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Deathly Hallows: Part 2", "value": 6}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Prisoner of Azkaban", "value": 6}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Chamber of Secrets", "value": 8}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Gladiator", "value": 1}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Goblet of Fire", "value": 5}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 4}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Order of the Phoenix", "value": 7}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Harry Potter and the Half-Blood Prince", "value": 7}, {"from": "Harry Potter and the Philosopher\u0027s Stone", "to": "Beauty and the Beast", "value": 1}, {"from": "The Wolf of Wall Street", "to": "Shutter Island", "value": 1}, {"from": "The Wolf of Wall Street", "to": "The Revenant", "value": 1}, {"from": "The Wolf of Wall Street", "to": "Suicide Squad", "value": 1}, {"from": "Skyfall", "to": "Harry Potter and the Deathly Hallows: Part 2", "value": 1}, {"from": "Skyfall", "to": "The Imitation Game", "value": 1}, {"from": "Skyfall", "to": "Harry Potter and the Goblet of Fire", "value": 1}, {"from": "Skyfall", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 1}, {"from": "Skyfall", "to": "Harry Potter and the Order of the Phoenix", "value": 1}, {"from": "Inside Out", "to": "Man of Steel", "value": 1}, {"from": "Inside Out", "to": "Batman v Superman: Dawn of Justice", "value": 1}, {"from": "Captain America: Civil War", "to": "Avengers: Age of Ultron", "value": 5}, {"from": "Captain America: Civil War", "to": "Captain America: The First Avenger", "value": 2}, {"from": "Captain America: Civil War", "to": "Iron Man 2", "value": 3}, {"from": "Captain America: Civil War", "to": "Captain America: The Winter Soldier", "value": 4}, {"from": "Captain America: Civil War", "to": "Ant-Man", "value": 1}, {"from": "Captain America: Civil War", "to": "Arrival", "value": 1}, {"from": "Captain America: Civil War", "to": "Sherlock Holmes", "value": 1}, {"from": "Captain America: Civil War", "to": "Lucy", "value": 1}, {"from": "Inglourious Basterds", "to": "Se7en", "value": 1}, {"from": "Inglourious Basterds", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "Inglourious Basterds", "to": "Now You See Me", "value": 1}, {"from": "Inglourious Basterds", "to": "World War Z", "value": 1}, {"from": "Inglourious Basterds", "to": "X-Men: First Class", "value": 1}, {"from": "Shutter Island", "to": "Avengers: Age of Ultron", "value": 1}, {"from": "Shutter Island", "to": "The Revenant", "value": 1}, {"from": "Shutter Island", "to": "Now You See Me", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Captain America: The First Avenger", "value": 2}, {"from": "Avengers: Age of Ultron", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Iron Man 2", "value": 4}, {"from": "Avengers: Age of Ultron", "to": "Captain America: The Winter Soldier", "value": 3}, {"from": "Avengers: Age of Ultron", "to": "Thor", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Arrival", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Sherlock Holmes", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Now You See Me", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "The Incredibles", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Lucy", "value": 1}, {"from": "Avengers: Age of Ultron", "to": "Jurassic Park", "value": 1}, {"from": "WALL\u00b7E", "to": "Monsters, Inc.", "value": 1}, {"from": "WALL\u00b7E", "to": "Toy Story", "value": 1}, {"from": "WALL\u00b7E", "to": "The Incredibles", "value": 1}, {"from": "The Hunger Games: Catching Fire", "to": "Captain America: The First Avenger", "value": 1}, {"from": "The Hunger Games: Catching Fire", "to": "X-Men: Days of Future Past", "value": 1}, {"from": "The Hunger Games: Catching Fire", "to": "Now You See Me", "value": 1}, {"from": "The Hunger Games: Catching Fire", "to": "The Hunger Games: Mockingjay - Part 1", "value": 7}, {"from": "The Hunger Games: Catching Fire", "to": "Beauty and the Beast", "value": 1}, {"from": "The Hunger Games: Catching Fire", "to": "X-Men: First Class", "value": 1}, {"from": "The Empire Strikes Back", "to": "Monsters, Inc.", "value": 1}, {"from": "The Empire Strikes Back", "to": "The Lion King", "value": 1}, {"from": "The Empire Strikes Back", "to": "Return of the Jedi", "value": 9}, {"from": "Big Hero 6", "to": "Frozen", "value": 1}, {"from": "Big Hero 6", "to": "Zootopia", "value": 1}, {"from": "Big Hero 6", "to": "Rogue One: A Star Wars Story", "value": 1}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Harry Potter and the Prisoner of Azkaban", "value": 6}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Harry Potter and the Chamber of Secrets", "value": 6}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Harry Potter and the Goblet of Fire", "value": 6}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 6}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Harry Potter and the Order of the Phoenix", "value": 8}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Harry Potter and the Half-Blood Prince", "value": 7}, {"from": "Harry Potter and the Deathly Hallows: Part 2", "to": "Beauty and the Beast", "value": 1}, {"from": "Logan", "to": "X-Men: Days of Future Past", "value": 2}, {"from": "Se7en", "to": "Iron Man 2", "value": 1}, {"from": "Se7en", "to": "Now You See Me", "value": 1}, {"from": "Se7en", "to": "Lucy", "value": 1}, {"from": "Se7en", "to": "World War Z", "value": 1}, {"from": "The Revenant", "to": "The Maze Runner", "value": 1}, {"from": "Finding Nemo", "to": "John Wick", "value": 1}, {"from": "Gone Girl", "to": "Batman v Superman: Dawn of Justice", "value": 1}, {"from": "Captain America: The First Avenger", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "Captain America: The First Avenger", "to": "Iron Man 2", "value": 1}, {"from": "Captain America: The First Avenger", "to": "Captain America: The Winter Soldier", "value": 3}, {"from": "Captain America: The First Avenger", "to": "The Incredibles", "value": 1}, {"from": "Captain America: The First Avenger", "to": "Jurassic Park", "value": 1}, {"from": "Captain America: The First Avenger", "to": "Beauty and the Beast", "value": 1}, {"from": "The Imitation Game", "to": "Kingsman: The Secret Service", "value": 1}, {"from": "The Imitation Game", "to": "Doctor Strange", "value": 1}, {"from": "The Imitation Game", "to": "Sherlock Holmes", "value": 1}, {"from": "The Imitation Game", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "Harry Potter and the Prisoner of Azkaban", "to": "Harry Potter and the Chamber of Secrets", "value": 6}, {"from": "Harry Potter and the Prisoner of Azkaban", "to": "Harry Potter and the Goblet of Fire", "value": 7}, {"from": "Harry Potter and the Prisoner of Azkaban", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 5}, {"from": "Harry Potter and the Prisoner of Azkaban", "to": "Harry Potter and the Order of the Phoenix", "value": 7}, {"from": "Harry Potter and the Prisoner of Azkaban", "to": "Harry Potter and the Half-Blood Prince", "value": 7}, {"from": "Harry Potter and the Prisoner of Azkaban", "to": "Beauty and the Beast", "value": 1}, {"from": "X-Men: Days of Future Past", "to": "The Hunger Games: Mockingjay - Part 1", "value": 1}, {"from": "X-Men: Days of Future Past", "to": "Beauty and the Beast", "value": 1}, {"from": "X-Men: Days of Future Past", "to": "X-Men: First Class", "value": 3}, {"from": "Monsters, Inc.", "to": "Toy Story", "value": 1}, {"from": "Monsters, Inc.", "to": "Return of the Jedi", "value": 1}, {"from": "Kingsman: The Secret Service", "to": "Iron Man 2", "value": 1}, {"from": "Kingsman: The Secret Service", "to": "Captain America: The Winter Soldier", "value": 1}, {"from": "Kingsman: The Secret Service", "to": "Sherlock Holmes", "value": 1}, {"from": "Kingsman: The Secret Service", "to": "Now You See Me", "value": 1}, {"from": "Kingsman: The Secret Service", "to": "The Incredibles", "value": 1}, {"from": "Kingsman: The Secret Service", "to": "Jurassic Park", "value": 1}, {"from": "Iron Man 2", "to": "Captain America: The Winter Soldier", "value": 2}, {"from": "Iron Man 2", "to": "Thor", "value": 1}, {"from": "Iron Man 2", "to": "Sherlock Holmes", "value": 1}, {"from": "Iron Man 2", "to": "The Incredibles", "value": 1}, {"from": "Iron Man 2", "to": "Lucy", "value": 1}, {"from": "Iron Man 2", "to": "Jurassic Park", "value": 1}, {"from": "Captain America: The Winter Soldier", "to": "Ant-Man", "value": 1}, {"from": "Captain America: The Winter Soldier", "to": "The Incredibles", "value": 1}, {"from": "Captain America: The Winter Soldier", "to": "Lucy", "value": 1}, {"from": "Captain America: The Winter Soldier", "to": "Jurassic Park", "value": 1}, {"from": "The Lion King", "to": "Batman v Superman: Dawn of Justice", "value": 1}, {"from": "Harry Potter and the Chamber of Secrets", "to": "Gladiator", "value": 1}, {"from": "Harry Potter and the Chamber of Secrets", "to": "Harry Potter and the Goblet of Fire", "value": 5}, {"from": "Harry Potter and the Chamber of Secrets", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 4}, {"from": "Harry Potter and the Chamber of Secrets", "to": "Harry Potter and the Order of the Phoenix", "value": 7}, {"from": "Harry Potter and the Chamber of Secrets", "to": "Harry Potter and the Half-Blood Prince", "value": 7}, {"from": "Harry Potter and the Chamber of Secrets", "to": "Beauty and the Beast", "value": 1}, {"from": "Thor", "to": "Zootopia", "value": 1}, {"from": "Thor", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "Gladiator", "to": "Man of Steel", "value": 1}, {"from": "The Amazing Spider-Man", "to": "Life of Pi", "value": 1}, {"from": "The Amazing Spider-Man", "to": "La La Land", "value": 1}, {"from": "Harry Potter and the Goblet of Fire", "to": "Harry Potter and the Deathly Hallows: Part 1", "value": 7}, {"from": "Harry Potter and the Goblet of Fire", "to": "Harry Potter and the Order of the Phoenix", "value": 7}, {"from": "Harry Potter and the Goblet of Fire", "to": "Harry Potter and the Half-Blood Prince", "value": 6}, {"from": "Harry Potter and the Goblet of Fire", "to": "Edge of Tomorrow", "value": 1}, {"from": "Harry Potter and the Goblet of Fire", "to": "Beauty and the Beast", "value": 1}, {"from": "Harry Potter and the Deathly Hallows: Part 1", "to": "Harry Potter and the Order of the Phoenix", "value": 7}, {"from": "Harry Potter and the Deathly Hallows: Part 1", "to": "Harry Potter and the Half-Blood Prince", "value": 6}, {"from": "Harry Potter and the Deathly Hallows: Part 1", "to": "Edge of Tomorrow", "value": 1}, {"from": "Harry Potter and the Deathly Hallows: Part 1", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "Harry Potter and the Deathly Hallows: Part 1", "to": "Beauty and the Beast", "value": 1}, {"from": "Man of Steel", "to": "Arrival", "value": 1}, {"from": "Man of Steel", "to": "Batman v Superman: Dawn of Justice", "value": 4}, {"from": "Doctor Strange", "to": "Arrival", "value": 1}, {"from": "Doctor Strange", "to": "Sherlock Holmes", "value": 1}, {"from": "Doctor Strange", "to": "Rogue One: A Star Wars Story", "value": 1}, {"from": "Toy Story", "to": "Saving Private Ryan", "value": 1}, {"from": "Harry Potter and the Order of the Phoenix", "to": "Harry Potter and the Half-Blood Prince", "value": 9}, {"from": "Harry Potter and the Order of the Phoenix", "to": "Beauty and the Beast", "value": 1}, {"from": "Arrival", "to": "Batman v Superman: Dawn of Justice", "value": 1}, {"from": "Arrival", "to": "Rogue One: A Star Wars Story", "value": 1}, {"from": "Now You See Me", "to": "Batman v Superman: Dawn of Justice", "value": 1}, {"from": "Now You See Me", "to": "Lucy", "value": 1}, {"from": "Now You See Me", "to": "The Hunger Games: Mockingjay - Part 1", "value": 1}, {"from": "Batman v Superman: Dawn of Justice", "to": "The Incredibles", "value": 1}, {"from": "Fantastic Beasts and Where to Find Them", "to": "Pirates of the Caribbean: Dead Man\u0027s Chest", "value": 1}, {"from": "Harry Potter and the Half-Blood Prince", "to": "Beauty and the Beast", "value": 1}, {"from": "Frozen", "to": "Zootopia", "value": 1}, {"from": "Frozen", "to": "Rogue One: A Star Wars Story", "value": 1}, {"from": "Frozen", "to": "Beauty and the Beast", "value": 1}, {"from": "The Incredibles", "to": "Jurassic Park", "value": 1}, {"from": "Zootopia", "to": "Rogue One: A Star Wars Story", "value": 1}, {"from": "Zootopia", "to": "La La Land", "value": 1}, {"from": "The Hunger Games: Mockingjay - Part 1", "to": "X-Men: First Class", "value": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "color": {"background": "#F89054", "hightlight": {"border": "rgba(129,11,233,1)"}}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

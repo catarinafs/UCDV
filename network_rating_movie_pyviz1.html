@@ -1,0 +1,500 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #fff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="Ace Ventura: Pet Detective (1994)">Ace Ventura: Pet Detective (1994)</option>
+                                
+                                    <option value="Batman Forever (1995)">Batman Forever (1995)</option>
+                                
+                                    <option value="Die Hard: With a Vengeance (1995)">Die Hard: With a Vengeance (1995)</option>
+                                
+                                    <option value="Dumb & Dumber (Dumb and Dumber) (1994)">Dumb & Dumber (Dumb and Dumber) (1994)</option>
+                                
+                                    <option value="Aladdin (1992)">Aladdin (1992)</option>
+                                
+                                    <option value="Beauty and the Beast (1991)">Beauty and the Beast (1991)</option>
+                                
+                                    <option value="Jurassic Park (1993)">Jurassic Park (1993)</option>
+                                
+                                    <option value="Lion King, The (1994)">Lion King, The (1994)</option>
+                                
+                                    <option value="Alien (1979)">Alien (1979)</option>
+                                
+                                    <option value="Aliens (1986)">Aliens (1986)</option>
+                                
+                                    <option value="Blade Runner (1982)">Blade Runner (1982)</option>
+                                
+                                    <option value="Star Wars: Episode V - The Empire Strikes Back (1980)">Star Wars: Episode V - The Empire Strikes Back (1980)</option>
+                                
+                                    <option value="Terminator, The (1984)">Terminator, The (1984)</option>
+                                
+                                    <option value="Indiana Jones and the Last Crusade (1989)">Indiana Jones and the Last Crusade (1989)</option>
+                                
+                                    <option value="American Beauty (1999)">American Beauty (1999)</option>
+                                
+                                    <option value="Fight Club (1999)">Fight Club (1999)</option>
+                                
+                                    <option value="Matrix, The (1999)">Matrix, The (1999)</option>
+                                
+                                    <option value="Sixth Sense, The (1999)">Sixth Sense, The (1999)</option>
+                                
+                                    <option value="American History X (1998)">American History X (1998)</option>
+                                
+                                    <option value="Apollo 13 (1995)">Apollo 13 (1995)</option>
+                                
+                                    <option value="Forrest Gump (1994)">Forrest Gump (1994)</option>
+                                
+                                    <option value="Fugitive, The (1993)">Fugitive, The (1993)</option>
+                                
+                                    <option value="True Lies (1994)">True Lies (1994)</option>
+                                
+                                    <option value="Back to the Future (1985)">Back to the Future (1985)</option>
+                                
+                                    <option value="Ghostbusters (a.k.a. Ghost Busters) (1984)">Ghostbusters (a.k.a. Ghost Busters) (1984)</option>
+                                
+                                    <option value="Groundhog Day (1993)">Groundhog Day (1993)</option>
+                                
+                                    <option value="Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)">Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)</option>
+                                
+                                    <option value="Star Wars: Episode IV - A New Hope (1977)">Star Wars: Episode IV - A New Hope (1977)</option>
+                                
+                                    <option value="Star Wars: Episode VI - Return of the Jedi (1983)">Star Wars: Episode VI - Return of the Jedi (1983)</option>
+                                
+                                    <option value="Batman (1989)">Batman (1989)</option>
+                                
+                                    <option value="Terminator 2: Judgment Day (1991)">Terminator 2: Judgment Day (1991)</option>
+                                
+                                    <option value="Batman Begins (2005)">Batman Begins (2005)</option>
+                                
+                                    <option value="Dark Knight, The (2008)">Dark Knight, The (2008)</option>
+                                
+                                    <option value="Incredibles, The (2004)">Incredibles, The (2004)</option>
+                                
+                                    <option value="Kill Bill: Vol. 1 (2003)">Kill Bill: Vol. 1 (2003)</option>
+                                
+                                    <option value="Lord of the Rings: The Fellowship of the Ring, The (2001)">Lord of the Rings: The Fellowship of the Ring, The (2001)</option>
+                                
+                                    <option value="Lord of the Rings: The Return of the King, The (2003)">Lord of the Rings: The Return of the King, The (2003)</option>
+                                
+                                    <option value="Lord of the Rings: The Two Towers, The (2002)">Lord of the Rings: The Two Towers, The (2002)</option>
+                                
+                                    <option value="Pirates of the Caribbean: The Curse of the Black Pearl (2003)">Pirates of the Caribbean: The Curse of the Black Pearl (2003)</option>
+                                
+                                    <option value="Beautiful Mind, A (2001)">Beautiful Mind, A (2001)</option>
+                                
+                                    <option value="Catch Me If You Can (2002)">Catch Me If You Can (2002)</option>
+                                
+                                    <option value="Shrek (2001)">Shrek (2001)</option>
+                                
+                                    <option value="Bourne Identity, The (2002)">Bourne Identity, The (2002)</option>
+                                
+                                    <option value="Minority Report (2002)">Minority Report (2002)</option>
+                                
+                                    <option value="Ocean's Eleven (2001)">Ocean's Eleven (2001)</option>
+                                
+                                    <option value="Spider-Man (2002)">Spider-Man (2002)</option>
+                                
+                                    <option value="Braveheart (1995)">Braveheart (1995)</option>
+                                
+                                    <option value="Pulp Fiction (1994)">Pulp Fiction (1994)</option>
+                                
+                                    <option value="Clockwork Orange, A (1971)">Clockwork Orange, A (1971)</option>
+                                
+                                    <option value="Reservoir Dogs (1992)">Reservoir Dogs (1992)</option>
+                                
+                                    <option value="Dances with Wolves (1990)">Dances with Wolves (1990)</option>
+                                
+                                    <option value="Inception (2010)">Inception (2010)</option>
+                                
+                                    <option value="Die Hard (1988)">Die Hard (1988)</option>
+                                
+                                    <option value="GoldenEye (1995)">GoldenEye (1995)</option>
+                                
+                                    <option value="Speed (1994)">Speed (1994)</option>
+                                
+                                    <option value="Eternal Sunshine of the Spotless Mind (2004)">Eternal Sunshine of the Spotless Mind (2004)</option>
+                                
+                                    <option value="Memento (2000)">Memento (2000)</option>
+                                
+                                    <option value="Fargo (1996)">Fargo (1996)</option>
+                                
+                                    <option value="Goodfellas (1990)">Goodfellas (1990)</option>
+                                
+                                    <option value="Fifth Element, The (1997)">Fifth Element, The (1997)</option>
+                                
+                                    <option value="Men in Black (a.k.a. MIB) (1997)">Men in Black (a.k.a. MIB) (1997)</option>
+                                
+                                    <option value="Shawshank Redemption, The (1994)">Shawshank Redemption, The (1994)</option>
+                                
+                                    <option value="Finding Nemo (2003)">Finding Nemo (2003)</option>
+                                
+                                    <option value="Monsters, Inc. (2001)">Monsters, Inc. (2001)</option>
+                                
+                                    <option value="Mrs. Doubtfire (1993)">Mrs. Doubtfire (1993)</option>
+                                
+                                    <option value="Schindler's List (1993)">Schindler's List (1993)</option>
+                                
+                                    <option value="Silence of the Lambs, The (1991)">Silence of the Lambs, The (1991)</option>
+                                
+                                    <option value="Ghost (1990)">Ghost (1990)</option>
+                                
+                                    <option value="Pretty Woman (1990)">Pretty Woman (1990)</option>
+                                
+                                    <option value="Gladiator (2000)">Gladiator (2000)</option>
+                                
+                                    <option value="Godfather, The (1972)">Godfather, The (1972)</option>
+                                
+                                    <option value="Godfather: Part II, The (1974)">Godfather: Part II, The (1974)</option>
+                                
+                                    <option value="One Flew Over the Cuckoo's Nest (1975)">One Flew Over the Cuckoo's Nest (1975)</option>
+                                
+                                    <option value="Home Alone (1990)">Home Alone (1990)</option>
+                                
+                                    <option value="Independence Day (a.k.a. ID4) (1996)">Independence Day (a.k.a. ID4) (1996)</option>
+                                
+                                    <option value="Mission: Impossible (1996)">Mission: Impossible (1996)</option>
+                                
+                                    <option value="Twister (1996)">Twister (1996)</option>
+                                
+                                    <option value="Mask, The (1994)">Mask, The (1994)</option>
+                                
+                                    <option value="Saving Private Ryan (1998)">Saving Private Ryan (1998)</option>
+                                
+                                    <option value="Star Wars: Episode I - The Phantom Menace (1999)">Star Wars: Episode I - The Phantom Menace (1999)</option>
+                                
+                                    <option value="Monty Python and the Holy Grail (1975)">Monty Python and the Holy Grail (1975)</option>
+                                
+                                    <option value="Princess Bride, The (1987)">Princess Bride, The (1987)</option>
+                                
+                                    <option value="Seven (a.k.a. Se7en) (1995)">Seven (a.k.a. Se7en) (1995)</option>
+                                
+                                    <option value="Usual Suspects, The (1995)">Usual Suspects, The (1995)</option>
+                                
+                                    <option value="X-Men (2000)">X-Men (2000)</option>
+                                
+                                    <option value="Stargate (1994)">Stargate (1994)</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "black"}, "id": "Ace Ventura: Pet Detective (1994)", "label": "Ace Ventura: Pet Detective (1994)", "shape": "dot", "title": "Ace Ventura: Pet Detective (1994) Neighbors:\u003cbr\u003eDumb \u0026 Dumber (Dumb and Dumber) (1994)\u003cbr\u003eDie Hard: With a Vengeance (1995)\u003cbr\u003eBatman Forever (1995)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Batman Forever (1995)", "label": "Batman Forever (1995)", "shape": "dot", "title": "Batman Forever (1995) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eAce Ventura: Pet Detective (1994)\u003cbr\u003eBatman (1989)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Die Hard: With a Vengeance (1995)", "label": "Die Hard: With a Vengeance (1995)", "shape": "dot", "title": "Die Hard: With a Vengeance (1995) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eGoldenEye (1995)\u003cbr\u003eAce Ventura: Pet Detective (1994)\u003cbr\u003eSpeed (1994)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Dumb \u0026 Dumber (Dumb and Dumber) (1994)", "label": "Dumb \u0026 Dumber (Dumb and Dumber) (1994)", "shape": "dot", "title": "Dumb \u0026 Dumber (Dumb and Dumber) (1994) Neighbors:\u003cbr\u003eAce Ventura: Pet Detective (1994)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Aladdin (1992)", "label": "Aladdin (1992)", "shape": "dot", "title": "Aladdin (1992) Neighbors:\u003cbr\u003eLion King, The (1994)\u003cbr\u003eBeauty and the Beast (1991)\u003cbr\u003eJurassic Park (1993)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Beauty and the Beast (1991)", "label": "Beauty and the Beast (1991)", "shape": "dot", "title": "Beauty and the Beast (1991) Neighbors:\u003cbr\u003eLion King, The (1994)\u003cbr\u003eAladdin (1992)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Jurassic Park (1993)", "label": "Jurassic Park (1993)", "shape": "dot", "title": "Jurassic Park (1993) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eIndependence Day (a.k.a. ID4) (1996)\u003cbr\u003eLion King, The (1994)\u003cbr\u003eApollo 13 (1995)\u003cbr\u003eAladdin (1992)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eBatman (1989)\u003cbr\u003eDances with Wolves (1990)\u003cbr\u003eBraveheart (1995)\u003cbr\u003eSpeed (1994)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eMask, The (1994)\u003cbr\u003eMrs. Doubtfire (1993)\u003cbr\u003eForrest Gump (1994)", "value": 15}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Lion King, The (1994)", "label": "Lion King, The (1994)", "shape": "dot", "title": "Lion King, The (1994) Neighbors:\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eBeauty and the Beast (1991)\u003cbr\u003eAladdin (1992)\u003cbr\u003eMask, The (1994)\u003cbr\u003eMrs. Doubtfire (1993)", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Alien (1979)", "label": "Alien (1979)", "shape": "dot", "title": "Alien (1979) Neighbors:\u003cbr\u003eAliens (1986)\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eBlade Runner (1982)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Aliens (1986)", "label": "Aliens (1986)", "shape": "dot", "title": "Aliens (1986) Neighbors:\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eAlien (1979)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Blade Runner (1982)", "label": "Blade Runner (1982)", "shape": "dot", "title": "Blade Runner (1982) Neighbors:\u003cbr\u003eAlien (1979)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Star Wars: Episode V - The Empire Strikes Back (1980)", "label": "Star Wars: Episode V - The Empire Strikes Back (1980)", "shape": "dot", "title": "Star Wars: Episode V - The Empire Strikes Back (1980) Neighbors:\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eStar Wars: Episode I - The Phantom Menace (1999)\u003cbr\u003eDie Hard (1988)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eBack to the Future (1985)\u003cbr\u003eSaving Private Ryan (1998)\u003cbr\u003eAliens (1986)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003ePrincess Bride, The (1987)\u003cbr\u003eAlien (1979)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 14}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Terminator, The (1984)", "label": "Terminator, The (1984)", "shape": "dot", "title": "Terminator, The (1984) Neighbors:\u003cbr\u003eDie Hard (1988)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eFifth Element, The (1997)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eAliens (1986)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eAlien (1979)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Indiana Jones and the Last Crusade (1989)", "label": "Indiana Jones and the Last Crusade (1989)", "shape": "dot", "title": "Indiana Jones and the Last Crusade (1989) Neighbors:\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eGhostbusters (a.k.a. Ghost Busters) (1984)\u003cbr\u003eDie Hard (1988)\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eBack to the Future (1985)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eAliens (1986)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "American Beauty (1999)", "label": "American Beauty (1999)", "shape": "dot", "title": "American Beauty (1999) Neighbors:\u003cbr\u003eSixth Sense, The (1999)\u003cbr\u003eFight Club (1999)\u003cbr\u003eMatrix, The (1999)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Fight Club (1999)", "label": "Fight Club (1999)", "shape": "dot", "title": "Fight Club (1999) Neighbors:\u003cbr\u003eShawshank Redemption, The (1994)\u003cbr\u003eSixth Sense, The (1999)\u003cbr\u003eAmerican History X (1998)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eMemento (2000)\u003cbr\u003eEternal Sunshine of the Spotless Mind (2004)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eInception (2010)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eKill Bill: Vol. 1 (2003)\u003cbr\u003eAmerican Beauty (1999)\u003cbr\u003eReservoir Dogs (1992)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 13}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Matrix, The (1999)", "label": "Matrix, The (1999)", "shape": "dot", "title": "Matrix, The (1999) Neighbors:\u003cbr\u003eSixth Sense, The (1999)\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eFight Club (1999)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eAmerican Beauty (1999)\u003cbr\u003eSaving Private Ryan (1998)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eGladiator (2000)\u003cbr\u003eForrest Gump (1994)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 15}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Sixth Sense, The (1999)", "label": "Sixth Sense, The (1999)", "shape": "dot", "title": "Sixth Sense, The (1999) Neighbors:\u003cbr\u003eAmerican Beauty (1999)\u003cbr\u003eSaving Private Ryan (1998)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eFight Club (1999)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "American History X (1998)", "label": "American History X (1998)", "shape": "dot", "title": "American History X (1998) Neighbors:\u003cbr\u003eFight Club (1999)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Apollo 13 (1995)", "label": "Apollo 13 (1995)", "shape": "dot", "title": "Apollo 13 (1995) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eForrest Gump (1994)\u003cbr\u003eJurassic Park (1993)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Forrest Gump (1994)", "label": "Forrest Gump (1994)", "shape": "dot", "title": "Forrest Gump (1994) Neighbors:\u003cbr\u003eShawshank Redemption, The (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eSchindler\u0027s List (1993)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eSilence of the Lambs, The (1991)\u003cbr\u003eApollo 13 (1995)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eBraveheart (1995)\u003cbr\u003eMrs. Doubtfire (1993)", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Fugitive, The (1993)", "label": "Fugitive, The (1993)", "shape": "dot", "title": "Fugitive, The (1993) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eApollo 13 (1995)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eSpeed (1994)\u003cbr\u003eBatman (1989)\u003cbr\u003eBraveheart (1995)", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "True Lies (1994)", "label": "True Lies (1994)", "shape": "dot", "title": "True Lies (1994) Neighbors:\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eApollo 13 (1995)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eBatman (1989)\u003cbr\u003eDances with Wolves (1990)\u003cbr\u003eBraveheart (1995)\u003cbr\u003eSpeed (1994)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eDie Hard: With a Vengeance (1995)\u003cbr\u003eStargate (1994)\u003cbr\u003eBatman Forever (1995)", "value": 11}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Back to the Future (1985)", "label": "Back to the Future (1985)", "shape": "dot", "title": "Back to the Future (1985) Neighbors:\u003cbr\u003eGroundhog Day (1993)\u003cbr\u003eGhostbusters (a.k.a. Ghost Busters) (1984)\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Ghostbusters (a.k.a. Ghost Busters) (1984)", "label": "Ghostbusters (a.k.a. Ghost Busters) (1984)", "shape": "dot", "title": "Ghostbusters (a.k.a. Ghost Busters) (1984) Neighbors:\u003cbr\u003eBack to the Future (1985)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Groundhog Day (1993)", "label": "Groundhog Day (1993)", "shape": "dot", "title": "Groundhog Day (1993) Neighbors:\u003cbr\u003eBack to the Future (1985)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "label": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "shape": "dot", "title": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981) Neighbors:\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eBack to the Future (1985)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Star Wars: Episode IV - A New Hope (1977)", "label": "Star Wars: Episode IV - A New Hope (1977)", "shape": "dot", "title": "Star Wars: Episode IV - A New Hope (1977) Neighbors:\u003cbr\u003eStar Wars: Episode I - The Phantom Menace (1999)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eBack to the Future (1985)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Star Wars: Episode VI - Return of the Jedi (1983)", "label": "Star Wars: Episode VI - Return of the Jedi (1983)", "shape": "dot", "title": "Star Wars: Episode VI - Return of the Jedi (1983) Neighbors:\u003cbr\u003eMen in Black (a.k.a. MIB) (1997)\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eStar Wars: Episode I - The Phantom Menace (1999)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eBack to the Future (1985)\u003cbr\u003eSaving Private Ryan (1998)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eRaiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Batman (1989)", "label": "Batman (1989)", "shape": "dot", "title": "Batman (1989) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eBatman Forever (1995)", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Terminator 2: Judgment Day (1991)", "label": "Terminator 2: Judgment Day (1991)", "shape": "dot", "title": "Terminator 2: Judgment Day (1991) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eBatman (1989)\u003cbr\u003eSpeed (1994)\u003cbr\u003eBraveheart (1995)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)\u003cbr\u003eForrest Gump (1994)", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Batman Begins (2005)", "label": "Batman Begins (2005)", "shape": "dot", "title": "Batman Begins (2005) Neighbors:\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eKill Bill: Vol. 1 (2003)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)\u003cbr\u003eDark Knight, The (2008)", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Dark Knight, The (2008)", "label": "Dark Knight, The (2008)", "shape": "dot", "title": "Dark Knight, The (2008) Neighbors:\u003cbr\u003eBatman Begins (2005)\u003cbr\u003eInception (2010)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Incredibles, The (2004)", "label": "Incredibles, The (2004)", "shape": "dot", "title": "Incredibles, The (2004) Neighbors:\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eShrek (2001)\u003cbr\u003eMonsters, Inc. (2001)\u003cbr\u003eKill Bill: Vol. 1 (2003)\u003cbr\u003eFinding Nemo (2003)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eBatman Begins (2005)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Kill Bill: Vol. 1 (2003)", "label": "Kill Bill: Vol. 1 (2003)", "shape": "dot", "title": "Kill Bill: Vol. 1 (2003) Neighbors:\u003cbr\u003eMemento (2000)\u003cbr\u003eEternal Sunshine of the Spotless Mind (2004)\u003cbr\u003eFight Club (1999)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eBatman Begins (2005)", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "label": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "shape": "dot", "title": "Lord of the Rings: The Fellowship of the Ring, The (2001) Neighbors:\u003cbr\u003eSpider-Man (2002)\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eMemento (2000)\u003cbr\u003eShrek (2001)\u003cbr\u003eFight Club (1999)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eGladiator (2000)\u003cbr\u003eBatman Begins (2005)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 10}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Lord of the Rings: The Return of the King, The (2003)", "label": "Lord of the Rings: The Return of the King, The (2003)", "shape": "dot", "title": "Lord of the Rings: The Return of the King, The (2003) Neighbors:\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eShrek (2001)\u003cbr\u003eFight Club (1999)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eBatman Begins (2005)\u003cbr\u003eDark Knight, The (2008)", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Lord of the Rings: The Two Towers, The (2002)", "label": "Lord of the Rings: The Two Towers, The (2002)", "shape": "dot", "title": "Lord of the Rings: The Two Towers, The (2002) Neighbors:\u003cbr\u003eSpider-Man (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eMemento (2000)\u003cbr\u003eShrek (2001)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eBatman Begins (2005)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 9}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "label": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "shape": "dot", "title": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) Neighbors:\u003cbr\u003eSpider-Man (2002)\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eShrek (2001)\u003cbr\u003eMonsters, Inc. (2001)\u003cbr\u003eKill Bill: Vol. 1 (2003)\u003cbr\u003eFinding Nemo (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eOcean\u0027s Eleven (2001)\u003cbr\u003eBatman Begins (2005)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 11}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Beautiful Mind, A (2001)", "label": "Beautiful Mind, A (2001)", "shape": "dot", "title": "Beautiful Mind, A (2001) Neighbors:\u003cbr\u003eCatch Me If You Can (2002)\u003cbr\u003eShrek (2001)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Catch Me If You Can (2002)", "label": "Catch Me If You Can (2002)", "shape": "dot", "title": "Catch Me If You Can (2002) Neighbors:\u003cbr\u003eBourne Identity, The (2002)\u003cbr\u003eMinority Report (2002)\u003cbr\u003eOcean\u0027s Eleven (2001)\u003cbr\u003eBeautiful Mind, A (2001)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Shrek (2001)", "label": "Shrek (2001)", "shape": "dot", "title": "Shrek (2001) Neighbors:\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eBeautiful Mind, A (2001)\u003cbr\u003eFinding Nemo (2003)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eMonsters, Inc. (2001)\u003cbr\u003eLord of the Rings: The Return of the King, The (2003)", "value": 8}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Bourne Identity, The (2002)", "label": "Bourne Identity, The (2002)", "shape": "dot", "title": "Bourne Identity, The (2002) Neighbors:\u003cbr\u003eCatch Me If You Can (2002)\u003cbr\u003eSpider-Man (2002)\u003cbr\u003eMinority Report (2002)\u003cbr\u003eOcean\u0027s Eleven (2001)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Minority Report (2002)", "label": "Minority Report (2002)", "shape": "dot", "title": "Minority Report (2002) Neighbors:\u003cbr\u003eSpider-Man (2002)\u003cbr\u003eBourne Identity, The (2002)\u003cbr\u003eMonsters, Inc. (2001)\u003cbr\u003eCatch Me If You Can (2002)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Ocean\u0027s Eleven (2001)", "label": "Ocean\u0027s Eleven (2001)", "shape": "dot", "title": "Ocean\u0027s Eleven (2001) Neighbors:\u003cbr\u003eBourne Identity, The (2002)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eCatch Me If You Can (2002)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Spider-Man (2002)", "label": "Spider-Man (2002)", "shape": "dot", "title": "Spider-Man (2002) Neighbors:\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eX-Men (2000)\u003cbr\u003eBourne Identity, The (2002)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eMinority Report (2002)", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Braveheart (1995)", "label": "Braveheart (1995)", "shape": "dot", "title": "Braveheart (1995) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eForrest Gump (1994)", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Pulp Fiction (1994)", "label": "Pulp Fiction (1994)", "shape": "dot", "title": "Pulp Fiction (1994) Neighbors:\u003cbr\u003eShawshank Redemption, The (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eUsual Suspects, The (1995)\u003cbr\u003eSilence of the Lambs, The (1991)\u003cbr\u003eFight Club (1999)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eBraveheart (1995)\u003cbr\u003eFargo (1996)\u003cbr\u003eReservoir Dogs (1992)\u003cbr\u003eForrest Gump (1994)\u003cbr\u003eSeven (a.k.a. Se7en) (1995)", "value": 12}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Clockwork Orange, A (1971)", "label": "Clockwork Orange, A (1971)", "shape": "dot", "title": "Clockwork Orange, A (1971) Neighbors:\u003cbr\u003eReservoir Dogs (1992)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Reservoir Dogs (1992)", "label": "Reservoir Dogs (1992)", "shape": "dot", "title": "Reservoir Dogs (1992) Neighbors:\u003cbr\u003eGoodfellas (1990)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eFight Club (1999)\u003cbr\u003eClockwork Orange, A (1971)\u003cbr\u003eFargo (1996)", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Dances with Wolves (1990)", "label": "Dances with Wolves (1990)", "shape": "dot", "title": "Dances with Wolves (1990) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eJurassic Park (1993)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Inception (2010)", "label": "Inception (2010)", "shape": "dot", "title": "Inception (2010) Neighbors:\u003cbr\u003eFight Club (1999)\u003cbr\u003eDark Knight, The (2008)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Die Hard (1988)", "label": "Die Hard (1988)", "shape": "dot", "title": "Die Hard (1988) Neighbors:\u003cbr\u003eTerminator, The (1984)\u003cbr\u003eIndiana Jones and the Last Crusade (1989)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "GoldenEye (1995)", "label": "GoldenEye (1995)", "shape": "dot", "title": "GoldenEye (1995) Neighbors:\u003cbr\u003eDie Hard: With a Vengeance (1995)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Speed (1994)", "label": "Speed (1994)", "shape": "dot", "title": "Speed (1994) Neighbors:\u003cbr\u003eTrue Lies (1994)\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eTerminator 2: Judgment Day (1991)\u003cbr\u003eFugitive, The (1993)\u003cbr\u003eDie Hard: With a Vengeance (1995)\u003cbr\u003eMrs. Doubtfire (1993)", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Eternal Sunshine of the Spotless Mind (2004)", "label": "Eternal Sunshine of the Spotless Mind (2004)", "shape": "dot", "title": "Eternal Sunshine of the Spotless Mind (2004) Neighbors:\u003cbr\u003eKill Bill: Vol. 1 (2003)\u003cbr\u003eFight Club (1999)\u003cbr\u003eMemento (2000)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Memento (2000)", "label": "Memento (2000)", "shape": "dot", "title": "Memento (2000) Neighbors:\u003cbr\u003eLord of the Rings: The Two Towers, The (2002)\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eEternal Sunshine of the Spotless Mind (2004)\u003cbr\u003eFight Club (1999)\u003cbr\u003eKill Bill: Vol. 1 (2003)", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Fargo (1996)", "label": "Fargo (1996)", "shape": "dot", "title": "Fargo (1996) Neighbors:\u003cbr\u003eGoodfellas (1990)\u003cbr\u003eReservoir Dogs (1992)\u003cbr\u003ePulp Fiction (1994)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Goodfellas (1990)", "label": "Goodfellas (1990)", "shape": "dot", "title": "Goodfellas (1990) Neighbors:\u003cbr\u003eGodfather: Part II, The (1974)\u003cbr\u003eGodfather, The (1972)\u003cbr\u003eFargo (1996)\u003cbr\u003eReservoir Dogs (1992)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Fifth Element, The (1997)", "label": "Fifth Element, The (1997)", "shape": "dot", "title": "Fifth Element, The (1997) Neighbors:\u003cbr\u003eMen in Black (a.k.a. MIB) (1997)\u003cbr\u003eTerminator, The (1984)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Men in Black (a.k.a. MIB) (1997)", "label": "Men in Black (a.k.a. MIB) (1997)", "shape": "dot", "title": "Men in Black (a.k.a. MIB) (1997) Neighbors:\u003cbr\u003eStar Wars: Episode I - The Phantom Menace (1999)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eFifth Element, The (1997)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Shawshank Redemption, The (1994)", "label": "Shawshank Redemption, The (1994)", "shape": "dot", "title": "Shawshank Redemption, The (1994) Neighbors:\u003cbr\u003eSchindler\u0027s List (1993)\u003cbr\u003ePulp Fiction (1994)\u003cbr\u003eSilence of the Lambs, The (1991)\u003cbr\u003eUsual Suspects, The (1995)\u003cbr\u003eFight Club (1999)\u003cbr\u003eForrest Gump (1994)", "value": 6}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Finding Nemo (2003)", "label": "Finding Nemo (2003)", "shape": "dot", "title": "Finding Nemo (2003) Neighbors:\u003cbr\u003eMonsters, Inc. (2001)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eShrek (2001)\u003cbr\u003eIncredibles, The (2004)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Monsters, Inc. (2001)", "label": "Monsters, Inc. (2001)", "shape": "dot", "title": "Monsters, Inc. (2001) Neighbors:\u003cbr\u003eShrek (2001)\u003cbr\u003eFinding Nemo (2003)\u003cbr\u003ePirates of the Caribbean: The Curse of the Black Pearl (2003)\u003cbr\u003eIncredibles, The (2004)\u003cbr\u003eMinority Report (2002)", "value": 5}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Mrs. Doubtfire (1993)", "label": "Mrs. Doubtfire (1993)", "shape": "dot", "title": "Mrs. Doubtfire (1993) Neighbors:\u003cbr\u003eJurassic Park (1993)\u003cbr\u003eLion King, The (1994)\u003cbr\u003eGhost (1990)\u003cbr\u003eSpeed (1994)\u003cbr\u003ePretty Woman (1990)\u003cbr\u003eHome Alone (1990)\u003cbr\u003eForrest Gump (1994)", "value": 7}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Schindler\u0027s List (1993)", "label": "Schindler\u0027s List (1993)", "shape": "dot", "title": "Schindler\u0027s List (1993) Neighbors:\u003cbr\u003eShawshank Redemption, The (1994)\u003cbr\u003eForrest Gump (1994)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Silence of the Lambs, The (1991)", "label": "Silence of the Lambs, The (1991)", "shape": "dot", "title": "Silence of the Lambs, The (1991) Neighbors:\u003cbr\u003eShawshank Redemption, The (1994)\u003cbr\u003eForrest Gump (1994)\u003cbr\u003eSeven (a.k.a. Se7en) (1995)\u003cbr\u003ePulp Fiction (1994)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Ghost (1990)", "label": "Ghost (1990)", "shape": "dot", "title": "Ghost (1990) Neighbors:\u003cbr\u003ePretty Woman (1990)\u003cbr\u003eMrs. Doubtfire (1993)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Pretty Woman (1990)", "label": "Pretty Woman (1990)", "shape": "dot", "title": "Pretty Woman (1990) Neighbors:\u003cbr\u003eMrs. Doubtfire (1993)\u003cbr\u003eGhost (1990)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Gladiator (2000)", "label": "Gladiator (2000)", "shape": "dot", "title": "Gladiator (2000) Neighbors:\u003cbr\u003eLord of the Rings: The Fellowship of the Ring, The (2001)\u003cbr\u003eMatrix, The (1999)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Godfather, The (1972)", "label": "Godfather, The (1972)", "shape": "dot", "title": "Godfather, The (1972) Neighbors:\u003cbr\u003eGodfather: Part II, The (1974)\u003cbr\u003eGoodfellas (1990)\u003cbr\u003eOne Flew Over the Cuckoo\u0027s Nest (1975)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Godfather: Part II, The (1974)", "label": "Godfather: Part II, The (1974)", "shape": "dot", "title": "Godfather: Part II, The (1974) Neighbors:\u003cbr\u003eGodfather, The (1972)\u003cbr\u003eGoodfellas (1990)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "One Flew Over the Cuckoo\u0027s Nest (1975)", "label": "One Flew Over the Cuckoo\u0027s Nest (1975)", "shape": "dot", "title": "One Flew Over the Cuckoo\u0027s Nest (1975) Neighbors:\u003cbr\u003eGodfather, The (1972)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Home Alone (1990)", "label": "Home Alone (1990)", "shape": "dot", "title": "Home Alone (1990) Neighbors:\u003cbr\u003eMrs. Doubtfire (1993)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Independence Day (a.k.a. ID4) (1996)", "label": "Independence Day (a.k.a. ID4) (1996)", "shape": "dot", "title": "Independence Day (a.k.a. ID4) (1996) Neighbors:\u003cbr\u003eMission: Impossible (1996)\u003cbr\u003eTwister (1996)\u003cbr\u003eJurassic Park (1993)", "value": 3}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Mission: Impossible (1996)", "label": "Mission: Impossible (1996)", "shape": "dot", "title": "Mission: Impossible (1996) Neighbors:\u003cbr\u003eIndependence Day (a.k.a. ID4) (1996)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Twister (1996)", "label": "Twister (1996)", "shape": "dot", "title": "Twister (1996) Neighbors:\u003cbr\u003eIndependence Day (a.k.a. ID4) (1996)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Mask, The (1994)", "label": "Mask, The (1994)", "shape": "dot", "title": "Mask, The (1994) Neighbors:\u003cbr\u003eLion King, The (1994)\u003cbr\u003eJurassic Park (1993)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Saving Private Ryan (1998)", "label": "Saving Private Ryan (1998)", "shape": "dot", "title": "Saving Private Ryan (1998) Neighbors:\u003cbr\u003eSixth Sense, The (1999)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eMatrix, The (1999)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Star Wars: Episode I - The Phantom Menace (1999)", "label": "Star Wars: Episode I - The Phantom Menace (1999)", "shape": "dot", "title": "Star Wars: Episode I - The Phantom Menace (1999) Neighbors:\u003cbr\u003eStar Wars: Episode IV - A New Hope (1977)\u003cbr\u003eMen in Black (a.k.a. MIB) (1997)\u003cbr\u003eStar Wars: Episode VI - Return of the Jedi (1983)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)", "value": 4}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Monty Python and the Holy Grail (1975)", "label": "Monty Python and the Holy Grail (1975)", "shape": "dot", "title": "Monty Python and the Holy Grail (1975) Neighbors:\u003cbr\u003ePrincess Bride, The (1987)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Princess Bride, The (1987)", "label": "Princess Bride, The (1987)", "shape": "dot", "title": "Princess Bride, The (1987) Neighbors:\u003cbr\u003eMonty Python and the Holy Grail (1975)\u003cbr\u003eStar Wars: Episode V - The Empire Strikes Back (1980)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Seven (a.k.a. Se7en) (1995)", "label": "Seven (a.k.a. Se7en) (1995)", "shape": "dot", "title": "Seven (a.k.a. Se7en) (1995) Neighbors:\u003cbr\u003eSilence of the Lambs, The (1991)\u003cbr\u003ePulp Fiction (1994)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Usual Suspects, The (1995)", "label": "Usual Suspects, The (1995)", "shape": "dot", "title": "Usual Suspects, The (1995) Neighbors:\u003cbr\u003eShawshank Redemption, The (1994)\u003cbr\u003ePulp Fiction (1994)", "value": 2}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "X-Men (2000)", "label": "X-Men (2000)", "shape": "dot", "title": "X-Men (2000) Neighbors:\u003cbr\u003eSpider-Man (2002)", "value": 1}, {"color": "#97c2fc", "font": {"color": "black"}, "id": "Stargate (1994)", "label": "Stargate (1994)", "shape": "dot", "title": "Stargate (1994) Neighbors:\u003cbr\u003eTrue Lies (1994)", "value": 1}]);
+                  edges = new vis.DataSet([{"from": "Ace Ventura: Pet Detective (1994)", "to": "Batman Forever (1995)", "value": 0.6204324097001057}, {"from": "Ace Ventura: Pet Detective (1994)", "to": "Die Hard: With a Vengeance (1995)", "value": 0.6185428543083008}, {"from": "Ace Ventura: Pet Detective (1994)", "to": "Dumb \u0026 Dumber (Dumb and Dumber) (1994)", "value": 0.670193549914285}, {"from": "Aladdin (1992)", "to": "Beauty and the Beast (1991)", "value": 0.7470560271849608}, {"from": "Aladdin (1992)", "to": "Jurassic Park (1993)", "value": 0.6134847670231212}, {"from": "Aladdin (1992)", "to": "Lion King, The (1994)", "value": 0.7179093567206755}, {"from": "Alien (1979)", "to": "Aliens (1986)", "value": 0.7735999988215025}, {"from": "Alien (1979)", "to": "Blade Runner (1982)", "value": 0.6075946301952967}, {"from": "Alien (1979)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6314367824245618}, {"from": "Alien (1979)", "to": "Terminator, The (1984)", "value": 0.6253312362230684}, {"from": "Aliens (1986)", "to": "Indiana Jones and the Last Crusade (1989)", "value": 0.6068937510229374}, {"from": "Aliens (1986)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6361991170451556}, {"from": "Aliens (1986)", "to": "Terminator, The (1984)", "value": 0.6559405806438977}, {"from": "American Beauty (1999)", "to": "Fight Club (1999)", "value": 0.625549484961384}, {"from": "American Beauty (1999)", "to": "Matrix, The (1999)", "value": 0.6132518485267103}, {"from": "American Beauty (1999)", "to": "Sixth Sense, The (1999)", "value": 0.6000076372662043}, {"from": "American History X (1998)", "to": "Fight Club (1999)", "value": 0.6490541625180005}, {"from": "Apollo 13 (1995)", "to": "Forrest Gump (1994)", "value": 0.6275585035702106}, {"from": "Apollo 13 (1995)", "to": "Fugitive, The (1993)", "value": 0.6286652093378774}, {"from": "Apollo 13 (1995)", "to": "Jurassic Park (1993)", "value": 0.6287794420504838}, {"from": "Apollo 13 (1995)", "to": "True Lies (1994)", "value": 0.602163982381948}, {"from": "Back to the Future (1985)", "to": "Ghostbusters (a.k.a. Ghost Busters) (1984)", "value": 0.6321600824725881}, {"from": "Back to the Future (1985)", "to": "Groundhog Day (1993)", "value": 0.6123580259608407}, {"from": "Back to the Future (1985)", "to": "Indiana Jones and the Last Crusade (1989)", "value": 0.6312890863673845}, {"from": "Back to the Future (1985)", "to": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 0.6441577711604514}, {"from": "Back to the Future (1985)", "to": "Star Wars: Episode IV - A New Hope (1977)", "value": 0.6228064899590663}, {"from": "Back to the Future (1985)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6543022175153037}, {"from": "Back to the Future (1985)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.6707429255415762}, {"from": "Batman (1989)", "to": "Batman Forever (1995)", "value": 0.7056388306699941}, {"from": "Batman (1989)", "to": "Fugitive, The (1993)", "value": 0.6397846910659102}, {"from": "Batman (1989)", "to": "Jurassic Park (1993)", "value": 0.6394962482774218}, {"from": "Batman (1989)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6456032142113408}, {"from": "Batman (1989)", "to": "True Lies (1994)", "value": 0.6967551073782041}, {"from": "Batman Begins (2005)", "to": "Dark Knight, The (2008)", "value": 0.6512815349004482}, {"from": "Batman Begins (2005)", "to": "Incredibles, The (2004)", "value": 0.61182918253506}, {"from": "Batman Begins (2005)", "to": "Kill Bill: Vol. 1 (2003)", "value": 0.6165495721863401}, {"from": "Batman Begins (2005)", "to": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "value": 0.6007891806526866}, {"from": "Batman Begins (2005)", "to": "Lord of the Rings: The Return of the King, The (2003)", "value": 0.6257390190013268}, {"from": "Batman Begins (2005)", "to": "Lord of the Rings: The Two Towers, The (2002)", "value": 0.6092169664134801}, {"from": "Batman Begins (2005)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6450088928464547}, {"from": "Batman Forever (1995)", "to": "True Lies (1994)", "value": 0.6427444326118962}, {"from": "Beautiful Mind, A (2001)", "to": "Catch Me If You Can (2002)", "value": 0.645041159921095}, {"from": "Beautiful Mind, A (2001)", "to": "Shrek (2001)", "value": 0.6052914471746624}, {"from": "Beauty and the Beast (1991)", "to": "Lion King, The (1994)", "value": 0.7083611889194937}, {"from": "Bourne Identity, The (2002)", "to": "Catch Me If You Can (2002)", "value": 0.6000173716378213}, {"from": "Bourne Identity, The (2002)", "to": "Minority Report (2002)", "value": 0.6206271707828731}, {"from": "Bourne Identity, The (2002)", "to": "Ocean\u0027s Eleven (2001)", "value": 0.6548000266449642}, {"from": "Bourne Identity, The (2002)", "to": "Spider-Man (2002)", "value": 0.6101689317586867}, {"from": "Braveheart (1995)", "to": "Forrest Gump (1994)", "value": 0.643089909656765}, {"from": "Braveheart (1995)", "to": "Fugitive, The (1993)", "value": 0.6453590130860721}, {"from": "Braveheart (1995)", "to": "Jurassic Park (1993)", "value": 0.6694539016153679}, {"from": "Braveheart (1995)", "to": "Pulp Fiction (1994)", "value": 0.6276211589088698}, {"from": "Braveheart (1995)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6598270010697839}, {"from": "Braveheart (1995)", "to": "True Lies (1994)", "value": 0.6273380190505031}, {"from": "Catch Me If You Can (2002)", "to": "Minority Report (2002)", "value": 0.6181125971271056}, {"from": "Catch Me If You Can (2002)", "to": "Ocean\u0027s Eleven (2001)", "value": 0.7050242809682833}, {"from": "Clockwork Orange, A (1971)", "to": "Reservoir Dogs (1992)", "value": 0.610280780866722}, {"from": "Dances with Wolves (1990)", "to": "Jurassic Park (1993)", "value": 0.6088208686655842}, {"from": "Dances with Wolves (1990)", "to": "True Lies (1994)", "value": 0.6086224456048934}, {"from": "Dark Knight, The (2008)", "to": "Inception (2010)", "value": 0.7272630720237487}, {"from": "Dark Knight, The (2008)", "to": "Lord of the Rings: The Return of the King, The (2003)", "value": 0.6206370722165795}, {"from": "Die Hard (1988)", "to": "Indiana Jones and the Last Crusade (1989)", "value": 0.6631555104933681}, {"from": "Die Hard (1988)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6157181581041329}, {"from": "Die Hard (1988)", "to": "Terminator, The (1984)", "value": 0.6430568374537399}, {"from": "Die Hard: With a Vengeance (1995)", "to": "GoldenEye (1995)", "value": 0.615793643688299}, {"from": "Die Hard: With a Vengeance (1995)", "to": "Speed (1994)", "value": 0.6340874099289485}, {"from": "Die Hard: With a Vengeance (1995)", "to": "True Lies (1994)", "value": 0.65825844287009}, {"from": "Eternal Sunshine of the Spotless Mind (2004)", "to": "Fight Club (1999)", "value": 0.6043411705819841}, {"from": "Eternal Sunshine of the Spotless Mind (2004)", "to": "Kill Bill: Vol. 1 (2003)", "value": 0.6098430102379132}, {"from": "Eternal Sunshine of the Spotless Mind (2004)", "to": "Memento (2000)", "value": 0.6143336770236228}, {"from": "Fargo (1996)", "to": "Goodfellas (1990)", "value": 0.6098872304067594}, {"from": "Fargo (1996)", "to": "Pulp Fiction (1994)", "value": 0.6103485647875843}, {"from": "Fargo (1996)", "to": "Reservoir Dogs (1992)", "value": 0.6114238361476995}, {"from": "Fifth Element, The (1997)", "to": "Men in Black (a.k.a. MIB) (1997)", "value": 0.6308190142005852}, {"from": "Fifth Element, The (1997)", "to": "Terminator, The (1984)", "value": 0.6077869895277181}, {"from": "Fight Club (1999)", "to": "Inception (2010)", "value": 0.6154174271466296}, {"from": "Fight Club (1999)", "to": "Kill Bill: Vol. 1 (2003)", "value": 0.6397375865433771}, {"from": "Fight Club (1999)", "to": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "value": 0.6357441936158549}, {"from": "Fight Club (1999)", "to": "Lord of the Rings: The Return of the King, The (2003)", "value": 0.6220158639255134}, {"from": "Fight Club (1999)", "to": "Matrix, The (1999)", "value": 0.7139374267197169}, {"from": "Fight Club (1999)", "to": "Memento (2000)", "value": 0.6695929550531325}, {"from": "Fight Club (1999)", "to": "Pulp Fiction (1994)", "value": 0.6232198521167442}, {"from": "Fight Club (1999)", "to": "Reservoir Dogs (1992)", "value": 0.6017296936890421}, {"from": "Fight Club (1999)", "to": "Shawshank Redemption, The (1994)", "value": 0.6066442496974278}, {"from": "Fight Club (1999)", "to": "Sixth Sense, The (1999)", "value": 0.6086623782263904}, {"from": "Finding Nemo (2003)", "to": "Incredibles, The (2004)", "value": 0.726374246457316}, {"from": "Finding Nemo (2003)", "to": "Monsters, Inc. (2001)", "value": 0.6973395668066144}, {"from": "Finding Nemo (2003)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6522653995655436}, {"from": "Finding Nemo (2003)", "to": "Shrek (2001)", "value": 0.7014347211899972}, {"from": "Forrest Gump (1994)", "to": "Jurassic Park (1993)", "value": 0.6882585716184461}, {"from": "Forrest Gump (1994)", "to": "Matrix, The (1999)", "value": 0.6099347988177691}, {"from": "Forrest Gump (1994)", "to": "Mrs. Doubtfire (1993)", "value": 0.6079825341881601}, {"from": "Forrest Gump (1994)", "to": "Pulp Fiction (1994)", "value": 0.6855436726312909}, {"from": "Forrest Gump (1994)", "to": "Schindler\u0027s List (1993)", "value": 0.6020717257722956}, {"from": "Forrest Gump (1994)", "to": "Shawshank Redemption, The (1994)", "value": 0.7129930616208374}, {"from": "Forrest Gump (1994)", "to": "Silence of the Lambs, The (1991)", "value": 0.6394625289111044}, {"from": "Forrest Gump (1994)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6008861125749384}, {"from": "Fugitive, The (1993)", "to": "Jurassic Park (1993)", "value": 0.6688042022792156}, {"from": "Fugitive, The (1993)", "to": "Speed (1994)", "value": 0.6484752743410764}, {"from": "Fugitive, The (1993)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6375608832771721}, {"from": "Fugitive, The (1993)", "to": "True Lies (1994)", "value": 0.6837305295354151}, {"from": "Ghost (1990)", "to": "Mrs. Doubtfire (1993)", "value": 0.6294200019555819}, {"from": "Ghost (1990)", "to": "Pretty Woman (1990)", "value": 0.6783587556654181}, {"from": "Ghostbusters (a.k.a. Ghost Busters) (1984)", "to": "Indiana Jones and the Last Crusade (1989)", "value": 0.6077937708687252}, {"from": "Gladiator (2000)", "to": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "value": 0.6153407463884177}, {"from": "Gladiator (2000)", "to": "Matrix, The (1999)", "value": 0.6260827319127359}, {"from": "Godfather, The (1972)", "to": "Godfather: Part II, The (1974)", "value": 0.821772641246093}, {"from": "Godfather, The (1972)", "to": "Goodfellas (1990)", "value": 0.6648409422087527}, {"from": "Godfather, The (1972)", "to": "One Flew Over the Cuckoo\u0027s Nest (1975)", "value": 0.6205362500124357}, {"from": "Godfather: Part II, The (1974)", "to": "Goodfellas (1990)", "value": 0.6215486009403688}, {"from": "Goodfellas (1990)", "to": "Reservoir Dogs (1992)", "value": 0.6742638643606834}, {"from": "Home Alone (1990)", "to": "Mrs. Doubtfire (1993)", "value": 0.6042131225459475}, {"from": "Incredibles, The (2004)", "to": "Kill Bill: Vol. 1 (2003)", "value": 0.6099033320134238}, {"from": "Incredibles, The (2004)", "to": "Lord of the Rings: The Return of the King, The (2003)", "value": 0.6462473394498751}, {"from": "Incredibles, The (2004)", "to": "Lord of the Rings: The Two Towers, The (2002)", "value": 0.6238663007685589}, {"from": "Incredibles, The (2004)", "to": "Monsters, Inc. (2001)", "value": 0.6410826075254518}, {"from": "Incredibles, The (2004)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6701103306713575}, {"from": "Incredibles, The (2004)", "to": "Shrek (2001)", "value": 0.6791293550300123}, {"from": "Independence Day (a.k.a. ID4) (1996)", "to": "Jurassic Park (1993)", "value": 0.6384182218976584}, {"from": "Independence Day (a.k.a. ID4) (1996)", "to": "Mission: Impossible (1996)", "value": 0.6773541312536431}, {"from": "Independence Day (a.k.a. ID4) (1996)", "to": "Twister (1996)", "value": 0.6206180316935161}, {"from": "Indiana Jones and the Last Crusade (1989)", "to": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 0.7581587073222714}, {"from": "Indiana Jones and the Last Crusade (1989)", "to": "Star Wars: Episode IV - A New Hope (1977)", "value": 0.6417186861458847}, {"from": "Indiana Jones and the Last Crusade (1989)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6989087493639501}, {"from": "Indiana Jones and the Last Crusade (1989)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.677132239931715}, {"from": "Indiana Jones and the Last Crusade (1989)", "to": "Terminator, The (1984)", "value": 0.6569604865581302}, {"from": "Jurassic Park (1993)", "to": "Lion King, The (1994)", "value": 0.6148474374374221}, {"from": "Jurassic Park (1993)", "to": "Mask, The (1994)", "value": 0.6113697162529949}, {"from": "Jurassic Park (1993)", "to": "Mrs. Doubtfire (1993)", "value": 0.6110510473895807}, {"from": "Jurassic Park (1993)", "to": "Pulp Fiction (1994)", "value": 0.6003493536380724}, {"from": "Jurassic Park (1993)", "to": "Speed (1994)", "value": 0.6617320102971231}, {"from": "Jurassic Park (1993)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.7199832128407864}, {"from": "Jurassic Park (1993)", "to": "True Lies (1994)", "value": 0.6193169741785335}, {"from": "Kill Bill: Vol. 1 (2003)", "to": "Memento (2000)", "value": 0.6048862181063537}, {"from": "Kill Bill: Vol. 1 (2003)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6337742980910483}, {"from": "Lion King, The (1994)", "to": "Mask, The (1994)", "value": 0.6389151717845173}, {"from": "Lion King, The (1994)", "to": "Mrs. Doubtfire (1993)", "value": 0.6500900808371692}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Lord of the Rings: The Return of the King, The (2003)", "value": 0.8744003888421549}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Lord of the Rings: The Two Towers, The (2002)", "value": 0.8741319643146043}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Matrix, The (1999)", "value": 0.654127588757516}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Memento (2000)", "value": 0.621171658734731}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.66156039608291}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Shrek (2001)", "value": 0.646423426905087}, {"from": "Lord of the Rings: The Fellowship of the Ring, The (2001)", "to": "Spider-Man (2002)", "value": 0.6207461904473901}, {"from": "Lord of the Rings: The Return of the King, The (2003)", "to": "Lord of the Rings: The Two Towers, The (2002)", "value": 0.882279199326598}, {"from": "Lord of the Rings: The Return of the King, The (2003)", "to": "Matrix, The (1999)", "value": 0.6402027116367681}, {"from": "Lord of the Rings: The Return of the King, The (2003)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6866880440000228}, {"from": "Lord of the Rings: The Return of the King, The (2003)", "to": "Shrek (2001)", "value": 0.6221449330952172}, {"from": "Lord of the Rings: The Two Towers, The (2002)", "to": "Matrix, The (1999)", "value": 0.625543665927891}, {"from": "Lord of the Rings: The Two Towers, The (2002)", "to": "Memento (2000)", "value": 0.6029807937382765}, {"from": "Lord of the Rings: The Two Towers, The (2002)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6742329863666461}, {"from": "Lord of the Rings: The Two Towers, The (2002)", "to": "Shrek (2001)", "value": 0.6087036123400034}, {"from": "Lord of the Rings: The Two Towers, The (2002)", "to": "Spider-Man (2002)", "value": 0.6119129115721357}, {"from": "Matrix, The (1999)", "to": "Pulp Fiction (1994)", "value": 0.6036449422477301}, {"from": "Matrix, The (1999)", "to": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "value": 0.63110690814832}, {"from": "Matrix, The (1999)", "to": "Saving Private Ryan (1998)", "value": 0.6796149698709606}, {"from": "Matrix, The (1999)", "to": "Sixth Sense, The (1999)", "value": 0.6513070231927238}, {"from": "Matrix, The (1999)", "to": "Star Wars: Episode IV - A New Hope (1977)", "value": 0.6634467462440659}, {"from": "Matrix, The (1999)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.7009347662061186}, {"from": "Matrix, The (1999)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.6609844896017212}, {"from": "Matrix, The (1999)", "to": "Terminator, The (1984)", "value": 0.6056520218651787}, {"from": "Men in Black (a.k.a. MIB) (1997)", "to": "Star Wars: Episode I - The Phantom Menace (1999)", "value": 0.6220919707388535}, {"from": "Men in Black (a.k.a. MIB) (1997)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.6004361582600501}, {"from": "Minority Report (2002)", "to": "Monsters, Inc. (2001)", "value": 0.617664290484021}, {"from": "Minority Report (2002)", "to": "Spider-Man (2002)", "value": 0.661261990981128}, {"from": "Monsters, Inc. (2001)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6331233776331066}, {"from": "Monsters, Inc. (2001)", "to": "Shrek (2001)", "value": 0.6816950530656409}, {"from": "Monty Python and the Holy Grail (1975)", "to": "Princess Bride, The (1987)", "value": 0.631291949760145}, {"from": "Mrs. Doubtfire (1993)", "to": "Pretty Woman (1990)", "value": 0.6561944125597293}, {"from": "Mrs. Doubtfire (1993)", "to": "Speed (1994)", "value": 0.6134258209609416}, {"from": "Ocean\u0027s Eleven (2001)", "to": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "value": 0.6384664604697758}, {"from": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "to": "Shrek (2001)", "value": 0.646717859722621}, {"from": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)", "to": "Spider-Man (2002)", "value": 0.624638390213281}, {"from": "Princess Bride, The (1987)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6028567046272265}, {"from": "Pulp Fiction (1994)", "to": "Reservoir Dogs (1992)", "value": 0.6039547255920711}, {"from": "Pulp Fiction (1994)", "to": "Seven (a.k.a. Se7en) (1995)", "value": 0.6976536180478474}, {"from": "Pulp Fiction (1994)", "to": "Shawshank Redemption, The (1994)", "value": 0.7023662173977213}, {"from": "Pulp Fiction (1994)", "to": "Silence of the Lambs, The (1991)", "value": 0.7093823704436171}, {"from": "Pulp Fiction (1994)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6102841093789625}, {"from": "Pulp Fiction (1994)", "to": "Usual Suspects, The (1995)", "value": 0.6726159032267901}, {"from": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "to": "Star Wars: Episode IV - A New Hope (1977)", "value": 0.708834116547687}, {"from": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.7234084856861314}, {"from": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.6425849208360762}, {"from": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)", "to": "Terminator, The (1984)", "value": 0.6100646168179139}, {"from": "Saving Private Ryan (1998)", "to": "Sixth Sense, The (1999)", "value": 0.6162554016101902}, {"from": "Saving Private Ryan (1998)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6061979531720704}, {"from": "Saving Private Ryan (1998)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.6154750923477206}, {"from": "Schindler\u0027s List (1993)", "to": "Shawshank Redemption, The (1994)", "value": 0.6291449572461635}, {"from": "Seven (a.k.a. Se7en) (1995)", "to": "Silence of the Lambs, The (1991)", "value": 0.6309827687040519}, {"from": "Shawshank Redemption, The (1994)", "to": "Silence of the Lambs, The (1991)", "value": 0.6470657221295463}, {"from": "Shawshank Redemption, The (1994)", "to": "Usual Suspects, The (1995)", "value": 0.6317865191598516}, {"from": "Speed (1994)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6300924636225894}, {"from": "Speed (1994)", "to": "True Lies (1994)", "value": 0.6728201343697293}, {"from": "Spider-Man (2002)", "to": "X-Men (2000)", "value": 0.6299534182859189}, {"from": "Star Wars: Episode I - The Phantom Menace (1999)", "to": "Star Wars: Episode IV - A New Hope (1977)", "value": 0.6043766677410025}, {"from": "Star Wars: Episode I - The Phantom Menace (1999)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.6277777265525113}, {"from": "Star Wars: Episode I - The Phantom Menace (1999)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.615998639441537}, {"from": "Star Wars: Episode IV - A New Hope (1977)", "to": "Star Wars: Episode V - The Empire Strikes Back (1980)", "value": 0.8324073552233737}, {"from": "Star Wars: Episode IV - A New Hope (1977)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.7906385655616324}, {"from": "Star Wars: Episode V - The Empire Strikes Back (1980)", "to": "Star Wars: Episode VI - Return of the Jedi (1983)", "value": 0.8043861253766994}, {"from": "Star Wars: Episode V - The Empire Strikes Back (1980)", "to": "Terminator 2: Judgment Day (1991)", "value": 0.6185297081659639}, {"from": "Star Wars: Episode V - The Empire Strikes Back (1980)", "to": "Terminator, The (1984)", "value": 0.6659825024248159}, {"from": "Star Wars: Episode VI - Return of the Jedi (1983)", "to": "Terminator, The (1984)", "value": 0.6351290192823139}, {"from": "Stargate (1994)", "to": "True Lies (1994)", "value": 0.6607491570681837}, {"from": "Terminator 2: Judgment Day (1991)", "to": "Terminator, The (1984)", "value": 0.6957236907757965}, {"from": "Terminator 2: Judgment Day (1991)", "to": "True Lies (1994)", "value": 0.6111643445364232}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 3, "borderWidthSelected": 4, "color": {"background": "#F89054", "hightlight": {"border": "rgba(129,11,233,1)"}}, "font": {"size": 14}}, "interaction": {"hover": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
